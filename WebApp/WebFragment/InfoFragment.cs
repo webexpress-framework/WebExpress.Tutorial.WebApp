@@ -32,7 +32,7 @@ namespace WebApp.WebFragment
         {
             base.Initialization(context, page);
 
-            Text = "WebApp:infopage.label";
+            Text = "webapp:infopage.label";
             Uri = ComponentManager.SitemapManager.GetUri<InfoPage>();
             Icon = new PropertyIcon(TypeIcon.InfoCircle);
             Active = page is InfoPage ? TypeActive.Active : TypeActive.None;

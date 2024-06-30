@@ -151,8 +151,8 @@ Now you have created a new solution and are ready to proceed with the next steps
 
   namespace WebApp
   {
-      [Name("WebApp:plugin.name")]
-      [Description("WebApp:plugin.description")]
+      [Name("webapp:plugin.name")]
+      [Description("webapp:plugin.description")]
       [Icon("/assets/img/webapp.svg")]
       [Dependency("webexpress.webui")]
       public sealed class Plugin : IPlugin
@@ -173,8 +173,8 @@ Now you have created a new solution and are ready to proceed with the next steps
 
   namespace WebApp
   {
-      [Name("WebApp:app.name")]
-      [Description("WebApp:app.description")]
+      [Name("webapp:app.name")]
+      [Description("webapp:app.description")]
       [Icon("/assets/img/webapp.svg")]
       [AssetPath("/")]
       [ContextPath("/webapp")]
@@ -196,8 +196,8 @@ Now you have created a new solution and are ready to proceed with the next steps
 
   namespace WebApp
   {
-      [Name("WebApp:module.name")]
-      [Description("WebApp:module.description")]
+      [Name("webapp:module.name")]
+      [Description("webapp:module.description")]
       [Icon("/assets/img/webapp.svg")]
       [AssetPath("/")]
       [ContextPath("/")]
@@ -224,8 +224,8 @@ Now you have created a new solution and are ready to proceed with the next steps
 
   namespace WebApp.WebPage
   {
-      [Title("WebApp:homepage.label")]
-      [Segment(null, "WebApp:homepage.label")]
+      [Title("webapp:homepage.label")]
+      [Segment(null, "webapp:homepage.label")]
       [ContextPath(null)]
       [Module<Module>]
       public sealed class HomePage : PageWebApp, IScope
@@ -264,8 +264,8 @@ Now you have created a new solution and are ready to proceed with the next steps
 
   namespace WebApp.WebPage
   {
-      [Title("WebApp:infopage.label")]
-      [Segment("info", "WebApp:infopage.label")]
+      [Title("webapp:infopage.label")]
+      [Segment("info", "webapp:infopage.label")]
       [ContextPath(null)]
       [Module<Module>]
       public sealed class InfoPage : PageWebApp, IScope
@@ -290,19 +290,19 @@ Now you have created a new solution and are ready to proceed with the next steps
 
               card.Add(new ControlText()
               {
-                  Text = this.I18N("WebApp:app.name"),
+                  Text = this.I18N("webapp:app.name"),
                   Format = TypeFormatText.H3
               });
 
               card.Add(new ControlText()
               {
-                  Text = this.I18N("WebApp:app.description"),
+                  Text = this.I18N("webapp:app.description"),
                   Format = TypeFormatText.Paragraph
               });
 
               card.Add(new ControlText()
               {
-                  Text = this.I18N("WebApp:app.about"),
+                  Text = this.I18N("webapp:app.about"),
                   Format = TypeFormatText.H3
               });
 
@@ -310,7 +310,7 @@ Now you have created a new solution and are ready to proceed with the next steps
               {
                   Text = string.Format
                   (
-                      this.I18N("WebApp:app.version.label"),
+                      this.I18N("webapp:app.version.label"),
                       this.I18N(webapp?.PluginName),
                       webapp?.Version,
                       webexpress?.PluginName,
@@ -368,7 +368,7 @@ Now you have created a new solution and are ready to proceed with the next steps
           {
               base.Initialization(context, page);
 
-              Text = "WebApp:infopage.label";
+              Text = "webapp:infopage.label";
               Uri = ComponentManager.SitemapManager.GetUri<InfoPage>();
               Icon = new PropertyIcon(TypeIcon.InfoCircle);
               Active = page is InfoPage ? TypeActive.Active : TypeActive.None;

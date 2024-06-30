@@ -3,8 +3,8 @@ using WebExpress.WebCore.WebAttribute;
 
 namespace WebApp
 {
-    [Name("WebApp:app.name")]
-    [Description("WebApp:app.description")]
+    [Name("webapp:app.name")]
+    [Description("webapp:app.description")]
     [Icon("/assets/img/webapp.svg")]
     [AssetPath("/")]
     [ContextPath("/webapp")]

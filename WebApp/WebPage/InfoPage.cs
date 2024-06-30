@@ -9,8 +9,8 @@ using WebExpress.WebUI.WebControl;
 
 namespace WebApp.WebPage
 {
-    [Title("WebApp:infopage.label")]
-    [Segment("info", "WebApp:infopage.label")]
+    [Title("webapp:infopage.label")]
+    [Segment("info", "webapp:infopage.label")]
     [ContextPath(null)]
     [Module<Module>]
     public sealed class InfoPage : PageWebApp, IScope
@@ -55,19 +55,19 @@ namespace WebApp.WebPage
 
             card.Add(new ControlText()
             {
-                Text = this.I18N("WebApp:app.name"),
+                Text = this.I18N("webapp:app.name"),
                 Format = TypeFormatText.H3
             });
 
             card.Add(new ControlText()
             {
-                Text = this.I18N("WebApp:app.description"),
+                Text = this.I18N("webapp:app.description"),
                 Format = TypeFormatText.Paragraph
             });
 
             card.Add(new ControlText()
             {
-                Text = this.I18N("WebApp:app.about"),
+                Text = this.I18N("webapp:app.about"),
                 Format = TypeFormatText.H3
             });
 
@@ -75,7 +75,7 @@ namespace WebApp.WebPage
             {
                 Text = string.Format
                 (
-                    this.I18N("WebApp:app.version.label"),
+                    this.I18N("webapp:app.version.label"),
                     this.I18N(webapp?.PluginName),
                     webapp?.Version,
                     webexpress?.PluginName,

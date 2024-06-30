@@ -7,8 +7,8 @@ using WebExpress.WebUI.WebControl;
 
 namespace WebApp.WebPage
 {
-    [Title("WebApp:homepage.label")]
-    [Segment(null, "WebApp:homepage.label")]
+    [Title("webapp:homepage.label")]
+    [Segment(null, "webapp:homepage.label")]
     [ContextPath(null)]
     [Module<Module>]
     public sealed class HomePage : PageWebApp, IScope

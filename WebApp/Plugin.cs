@@ -3,8 +3,8 @@ using WebExpress.WebCore.WebPlugin;
 
 namespace WebApp
 {
-    [Name("WebApp:plugin.name")]
-    [Description("WebApp:plugin.description")]
+    [Name("webapp:plugin.name")]
+    [Description("webapp:plugin.description")]
     [Icon("/assets/img/webapp.svg")]
     [Dependency("webexpress.webui")]
     public sealed class Plugin : IPlugin

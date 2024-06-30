@@ -3,8 +3,8 @@ using WebExpress.WebCore.WebModule;
 
 namespace WebApp
 {
-    [Name("WebApp:module.name")]
-    [Description("WebApp:module.description")]
+    [Name("webapp:module.name")]
+    [Description("webapp:module.description")]
     [Icon("/assets/img/webapp.svg")]
     [AssetPath("/")]
     [ContextPath("/")]
