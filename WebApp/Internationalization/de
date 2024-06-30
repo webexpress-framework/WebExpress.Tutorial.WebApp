@@ -1,0 +1,17 @@
+﻿# Deutsch
+plugin.name=WebApp
+plugin.description=Tutorial einer einfachen WebExprss Anwendudng.
+
+app.name=WebApp Tutorial
+app.label=WebExprss Application
+app.description=Tutorial einer einfachen WebExprss Anwendudng.
+app.license.label=Lizenz MIT 
+app.license.uri=https://github.com/ReneSchwarzer/WebExpress.Tutorial.WebApp/blob/main/LICENSE
+app.about=Über WebApp Tutorial
+app.version.label={0} Version {1} erstellt mit {2} Version {3}.
+
+module.name=WebApp
+module.description=Modul der Anwendung WebApp.
+
+homepage.label=Startseite
+infopage.label=Info

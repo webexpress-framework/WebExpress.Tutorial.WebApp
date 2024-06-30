@@ -1,0 +1,48 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	  <TargetFramework>net8.0</TargetFramework>
+	  <Version>0.0.7.0</Version>
+	  <AssemblyVersion>0.0.7.0</AssemblyVersion>
+	  <PackageLicenseExpression>MIT</PackageLicenseExpression>
+	  <RepositoryUrl>https://github.com/ReneSchwarzer/WebExpress.Tutorial.HelloWorld.git</RepositoryUrl>
+	  <EnableDynamicLoading>true</EnableDynamicLoading>
+  </PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="WebExpress.WebCore" Version="0.0.7-alpha">
+			<Private>false</Private>
+			<ExcludeAssets>runtime</ExcludeAssets>
+		</PackageReference>
+
+		<PackageReference Include="WebExpress.WebUI" Version="0.0.7-alpha">
+			<Private>false</Private>
+			<ExcludeAssets>runtime</ExcludeAssets>
+		</PackageReference>
+
+		<PackageReference Include="WebExpress.WebIndex" Version="0.0.7-alpha">
+			<Private>false</Private>
+			<ExcludeAssets>runtime</ExcludeAssets>
+		</PackageReference>
+
+		<PackageReference Include="WebExpress.WebApp" Version="0.0.7-alpha">
+			<Private>false</Private>
+			<ExcludeAssets>runtime</ExcludeAssets>
+		</PackageReference>
+	</ItemGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Include="Internationalization/en" />
+		<EmbeddedResource Include="Internationalization/de" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Include="Assets/img/favicon.png" />
+		<EmbeddedResource Include="Assets/img/webapp.svg" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Include="../README.md" />
+	</ItemGroup>
+
+</Project>
