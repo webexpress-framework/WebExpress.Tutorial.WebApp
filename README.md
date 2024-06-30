@@ -467,7 +467,7 @@ Now you have created a new solution and are ready to proceed with the next steps
   ```
 
 ## Add the Assets
-- Add assets to the `WebApp` project. You can get the assets for this tutorial here: https://github.com/ReneSchwarzer/WebExpress.Tutorial.WebApp/tree/main/src/WebApp/Assets/img
+- Add assets to the `WebApp` project. You can get the assets for this tutorial here: https://github.com/ReneSchwarzer/WebExpress.Tutorial.WebApp/tree/main/WebApp/Assets/img
 - Add the assets in the `WebApp` project file.
   ```xml
   <ItemGroup>
