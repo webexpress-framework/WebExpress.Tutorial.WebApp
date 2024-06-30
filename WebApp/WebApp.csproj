@@ -5,7 +5,7 @@
 	  <Version>0.0.7.0</Version>
 	  <AssemblyVersion>0.0.7.0</AssemblyVersion>
 	  <PackageLicenseExpression>MIT</PackageLicenseExpression>
-	  <RepositoryUrl>https://github.com/ReneSchwarzer/WebExpress.Tutorial.HelloWorld.git</RepositoryUrl>
+	  <RepositoryUrl>https://github.com/ReneSchwarzer/WebExpress.Tutorial.WebApp.git</RepositoryUrl>
 	  <EnableDynamicLoading>true</EnableDynamicLoading>
   </PropertyGroup>
 

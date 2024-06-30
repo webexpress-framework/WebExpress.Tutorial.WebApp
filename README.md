@@ -112,7 +112,7 @@ Now you have created a new solution and are ready to proceed with the next steps
   </ItemGroup>
 
   <ItemGroup>
-      <ProjectReference Include="..\WebApp\WebApp.csproj" />
+      <ProjectReference Include="../WebApp/WebApp.csproj" />
   </ItemGroup>
   ```
 - Adjust the project file to your requirements.
