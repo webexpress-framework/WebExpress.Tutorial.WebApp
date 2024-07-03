@@ -14,7 +14,7 @@ namespace WebApp.WebResource
     public sealed class ResourceAsset : WebExpress.WebCore.WebResource.ResourceAsset
     {
         /// <summary>
-        /// Constructor
+        /// Initializes a new instance of the <see cref="ResourceAsset"/> class.
         /// </summary>
         public ResourceAsset()
         {

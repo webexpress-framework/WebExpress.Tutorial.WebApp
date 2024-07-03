@@ -7,6 +7,7 @@ namespace WebApp
     [Description("webapp:plugin.description")]
     [Icon("/assets/img/webapp.svg")]
     [Dependency("webexpress.webui")]
+    [Dependency("webexpress.webapp")]
     public sealed class Plugin : IPlugin
     {
         /// <summary>

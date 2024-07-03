@@ -215,7 +215,6 @@ Now you have created a new solution and are ready to proceed with the next steps
 ## Create a home page
 - Create a new view for the home page in the `WebApp` project.
   ```csharp
-  using System.IO;
   using WebExpress.WebApp.WebPage;
   using WebExpress.WebCore.WebAttribute;
   using WebExpress.WebCore.WebResource;
@@ -230,15 +229,6 @@ Now you have created a new solution and are ready to proceed with the next steps
       [Module<Module>]
       public sealed class HomePage : PageWebApp, IScope
       {
-          public override void Process(RenderContextWebApp context)
-          {
-              base.Process(context);
-              
-              using var stream = GetType().Assembly.GetManifestResourceStream("WebApp.README.md");
-              using var reader = new StreamReader(stream);
-              
-              context.VisualTree.Content.Primary.Add(new ControlText() { Text = reader.ReadToEnd(), Format = TypeFormatText.Markdown });
-          }
       }
   }
   ```
@@ -333,18 +323,56 @@ Now you have created a new solution and are ready to proceed with the next steps
 
   namespace WebApp.WebResource
   {
-    [Title("Assets")]
-    [Segment("assets", "")]
-    [ContextPath("/")]
-    [IncludeSubPaths(true)]
-    [Module<Module>]
-    public sealed class ResourceAsset : WebExpress.WebCore.WebResource.ResourceAsset
-    {
-    }
+      [Title("Assets")]
+      [Segment("assets", "")]
+      [ContextPath("/")]
+      [IncludeSubPaths(true)]
+      [Module<Module>]
+      public sealed class ResourceAsset : WebExpress.WebCore.WebResource.ResourceAsset
+      {
+      }
   }
   ```
 
-## Add a fragment for the info page
+## Add a fragment for the content of the home page
+- Create a new fragment to view the content in the `WebApp` project.
+  ```csharp
+  using System.IO;
+  using WebApp.WebPage;
+  using WebExpress.WebApp.WebFragment;
+  using WebExpress.WebCore.WebAttribute;
+  using WebExpress.WebCore.WebHtml;
+  using WebExpress.WebCore.WebPage;
+  using WebExpress.WebUI.WebAttribute;
+  using WebExpress.WebUI.WebControl;
+  using WebExpress.WebUI.WebFragment;
+
+  namespace WebApp.WebFragment
+  {
+      [Section(Section.ContentPrimary)]
+      [Module<Module>]
+      [Scope<HomePage>]
+      public sealed class HomeContentFragment : FragmentControlPanel
+      {
+          public override void Initialization(IFragmentContext context, IPage page)
+          {
+              base.Initialization(context, page);
+
+              using var stream = GetType().Assembly.GetManifestResourceStream("WebApp.README.md");
+              using var reader = new StreamReader(stream);
+
+              Content.Add(new ControlText()
+              {
+                  Format = TypeFormatText.Markdown,
+                  Text = reader.ReadToEnd()
+              });
+          }
+      }
+  }
+  ```
+- Adjust the fragment to your requirements.
+
+## Add a fragment for the link to the info page
 - Create a new fragment to view the info page in the `WebApp` project.
   ```csharp
   using WebApp.WebPage;
@@ -376,6 +404,7 @@ Now you have created a new solution and are ready to proceed with the next steps
       }
   }
   ```
+- Adjust the fragment to your requirements.
 
 ## Add a fragment for the page footer
 - Create a new fragment to view the footer in the `WebApp` project.
@@ -414,7 +443,7 @@ Now you have created a new solution and are ready to proceed with the next steps
       }
   }
   ```
-
+- Adjust the fragment to your requirements.
 
 ## Change the program class
 - Change the program class of the `WebApp.App` project as follows:

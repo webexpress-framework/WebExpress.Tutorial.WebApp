@@ -16,7 +16,7 @@ namespace WebApp.WebFragment
     public sealed class InfoFragment : FragmentControlNavigationItemLink
     {
         /// <summary>
-        /// Constructor
+        /// Initializes a new instance of the <see cref="InfoFragment"/> class.
         /// </summary>
         public InfoFragment()
             : base()

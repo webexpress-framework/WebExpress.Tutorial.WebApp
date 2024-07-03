@@ -1,5 +1,6 @@
-﻿using WebExpress.WebApp.WebFragment;
-using WebExpress.WebCore.Internationalization;
+﻿using System.IO;
+using WebApp.WebPage;
+using WebExpress.WebApp.WebFragment;
 using WebExpress.WebCore.WebAttribute;
 using WebExpress.WebCore.WebHtml;
 using WebExpress.WebCore.WebPage;
@@ -9,23 +10,15 @@ using WebExpress.WebUI.WebFragment;
 
 namespace WebApp.WebFragment
 {
-    [Section(Section.FooterPrimary)]
+    [Section(Section.ContentPrimary)]
     [Module<Module>]
-    public sealed class FooterFragment : FragmentControlPanel
+    [Scope<HomePage>]
+    public sealed class HomeContentFragment : FragmentControlPanel
     {
         /// <summary>
-        /// The license.
+        /// Constructor
         /// </summary>
-        private ControlLink LicenceLink { get; } = new ControlLink()
-        {
-            TextColor = new PropertyColorText(TypeColorText.Muted),
-            Size = new PropertySizeText(TypeSizeText.Small)
-        };
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="FooterFragment"/> class.
-        /// </summary>
-        public FooterFragment()
+        public HomeContentFragment()
             : base()
         {
         }
@@ -39,11 +32,14 @@ namespace WebApp.WebFragment
         {
             base.Initialization(context, page);
 
-            Classes.Add("text-center");
+            using var stream = GetType().Assembly.GetManifestResourceStream("WebApp.README.md");
+            using var reader = new StreamReader(stream);
 
-            LicenceLink.Text = InternationalizationManager.I18N(context.Culture, "webapp:app.license.label");
-            LicenceLink.Uri = InternationalizationManager.I18N(context.Culture, "webapp:app.license.uri");
-            Content.Add(LicenceLink);
+            Content.Add(new ControlText()
+            {
+                Format = TypeFormatText.Markdown,
+                Text = reader.ReadToEnd()
+            });
         }
 
         /// <summary>

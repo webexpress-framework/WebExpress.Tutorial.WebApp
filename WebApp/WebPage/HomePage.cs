@@ -1,9 +1,7 @@
-﻿using System.IO;
-using WebExpress.WebApp.WebPage;
+﻿using WebExpress.WebApp.WebPage;
 using WebExpress.WebCore.WebAttribute;
 using WebExpress.WebCore.WebResource;
 using WebExpress.WebCore.WebScope;
-using WebExpress.WebUI.WebControl;
 
 namespace WebApp.WebPage
 {
@@ -36,11 +34,6 @@ namespace WebApp.WebPage
         public override void Process(RenderContextWebApp context)
         {
             base.Process(context);
-
-            using var stream = GetType().Assembly.GetManifestResourceStream("WebApp.README.md");
-            using var reader = new StreamReader(stream);
-
-            context.VisualTree.Content.Primary.Add(new ControlText() { Text = reader.ReadToEnd(), Format = TypeFormatText.Markdown });
         }
     }
 }
