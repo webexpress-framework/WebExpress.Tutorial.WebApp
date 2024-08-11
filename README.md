@@ -339,7 +339,7 @@ Now you have created a new solution and are ready to proceed with the next steps
   ```csharp
   using System.IO;
   using WebApp.WebPage;
-  using WebExpress.WebApp.WebFragment;
+  using WebExpress.WebApp.WebSection;
   using WebExpress.WebCore.WebAttribute;
   using WebExpress.WebCore.WebHtml;
   using WebExpress.WebCore.WebPage;
@@ -349,7 +349,7 @@ Now you have created a new solution and are ready to proceed with the next steps
 
   namespace WebApp.WebFragment
   {
-      [Section(Section.ContentPrimary)]
+      [Section(SectionWebApp.ContentPrimary)]
       [Module<Module>]
       [Scope<HomePage>]
       public sealed class HomeContentFragment : FragmentControlPanel
@@ -376,7 +376,7 @@ Now you have created a new solution and are ready to proceed with the next steps
 - Create a new fragment to view the info page in the `WebApp` project.
   ```csharp
   using WebApp.WebPage;
-  using WebExpress.WebApp.WebFragment;
+  using WebExpress.WebApp.WebSection;
   using WebExpress.WebCore.WebAttribute;
   using WebExpress.WebCore.WebComponent;
   using WebExpress.WebCore.WebHtml;
@@ -387,7 +387,7 @@ Now you have created a new solution and are ready to proceed with the next steps
 
   namespace WebApp.WebFragment
   {
-      [Section(Section.AppNavigationSecondary)]
+      [Section(SectionWebApp.AppNavigationSecondary)]
       [Module<Module>]
       [Cache]
       public sealed class InfoFragment : FragmentControlNavigationItemLink
@@ -409,7 +409,7 @@ Now you have created a new solution and are ready to proceed with the next steps
 ## Add a fragment for the page footer
 - Create a new fragment to view the footer in the `WebApp` project.
   ```csharp
-  using WebExpress.WebApp.WebFragment;
+  using WebExpress.WebApp.WebSection;
   using WebExpress.WebCore.Internationalization;
   using WebExpress.WebCore.WebAttribute;
   using WebExpress.WebCore.WebHtml;
@@ -420,7 +420,7 @@ Now you have created a new solution and are ready to proceed with the next steps
 
   namespace WebApp.WebFragment
   {
-      [Section(Section.FooterPrimary)]
+      [Section(SectionWebApp.FooterPrimary)]
       [Module<Module>]
       public sealed class FooterFragment : FragmentControlPanel
       {
@@ -436,8 +436,8 @@ Now you have created a new solution and are ready to proceed with the next steps
 
               Classes.Add("text-center");  
 
-              LicenceLink.Text = InternationalizationManager.I18N(context.Culture, "webapp:app.license.label");
-              LicenceLink.Uri = InternationalizationManager.I18N(context.Culture, "webapp:app.license.uri");
+              LicenceLink.Text = context.I18N("webapp:app.license.label");
+              LicenceLink.Uri = context.I18N("webapp:app.license.uri");
               Content.Add(LicenceLink);
           }
       }

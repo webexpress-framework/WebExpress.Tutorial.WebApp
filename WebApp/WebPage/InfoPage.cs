@@ -16,7 +16,7 @@ namespace WebApp.WebPage
     public sealed class InfoPage : PageWebApp, IScope
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="InfoPage"/> class.
+        /// Initializes a new instance of the class.
         /// </summary>
         public InfoPage()
         {

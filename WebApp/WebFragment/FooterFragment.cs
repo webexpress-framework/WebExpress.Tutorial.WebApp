@@ -1,4 +1,4 @@
-﻿using WebExpress.WebApp.WebFragment;
+﻿using WebExpress.WebApp.WebSection;
 using WebExpress.WebCore.Internationalization;
 using WebExpress.WebCore.WebAttribute;
 using WebExpress.WebCore.WebHtml;
@@ -9,12 +9,12 @@ using WebExpress.WebUI.WebFragment;
 
 namespace WebApp.WebFragment
 {
-    [Section(Section.FooterPrimary)]
+    [Section(SectionWebApp.FooterPrimary)]
     [Module<Module>]
     public sealed class FooterFragment : FragmentControlPanel
     {
         /// <summary>
-        /// The license.
+        /// The license link.
         /// </summary>
         private ControlLink LicenceLink { get; } = new ControlLink()
         {
@@ -23,7 +23,7 @@ namespace WebApp.WebFragment
         };
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FooterFragment"/> class.
+        /// Initializes a new instance of the class.
         /// </summary>
         public FooterFragment()
             : base()
@@ -41,8 +41,8 @@ namespace WebApp.WebFragment
 
             Classes.Add("text-center");
 
-            LicenceLink.Text = InternationalizationManager.I18N(context.Culture, "webapp:app.license.label");
-            LicenceLink.Uri = InternationalizationManager.I18N(context.Culture, "webapp:app.license.uri");
+            LicenceLink.Text = context.I18N("webapp:app.license.label");
+            LicenceLink.Uri = context.I18N("webapp:app.license.uri");
             Content.Add(LicenceLink);
         }
 

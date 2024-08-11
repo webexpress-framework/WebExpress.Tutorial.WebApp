@@ -12,7 +12,7 @@ namespace WebApp.WebPage
     public sealed class HomePage : PageWebApp, IScope
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="HomePage"/> class.
+        /// Initializes a new instance of the class.
         /// </summary>
         public HomePage()
         {

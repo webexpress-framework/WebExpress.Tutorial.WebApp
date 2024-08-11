@@ -1,5 +1,5 @@
 ﻿using WebApp.WebPage;
-using WebExpress.WebApp.WebFragment;
+using WebExpress.WebApp.WebSection;
 using WebExpress.WebCore.WebAttribute;
 using WebExpress.WebCore.WebComponent;
 using WebExpress.WebCore.WebHtml;
@@ -10,13 +10,13 @@ using WebExpress.WebUI.WebFragment;
 
 namespace WebApp.WebFragment
 {
-    [Section(Section.AppNavigationSecondary)]
+    [Section(SectionWebApp.AppNavigationSecondary)]
     [Module<Module>]
     [Cache]
     public sealed class InfoFragment : FragmentControlNavigationItemLink
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="InfoFragment"/> class.
+        /// Initializes a new instance of the class.
         /// </summary>
         public InfoFragment()
             : base()

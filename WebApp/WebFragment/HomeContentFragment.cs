@@ -1,6 +1,6 @@
 ﻿using System.IO;
 using WebApp.WebPage;
-using WebExpress.WebApp.WebFragment;
+using WebExpress.WebApp.WebSection;
 using WebExpress.WebCore.WebAttribute;
 using WebExpress.WebCore.WebHtml;
 using WebExpress.WebCore.WebPage;
@@ -10,13 +10,13 @@ using WebExpress.WebUI.WebFragment;
 
 namespace WebApp.WebFragment
 {
-    [Section(Section.ContentPrimary)]
+    [Section(SectionWebApp.ContentPrimary)]
     [Module<Module>]
     [Scope<HomePage>]
     public sealed class HomeContentFragment : FragmentControlPanel
     {
         /// <summary>
-        /// Constructor
+        /// Initializes a new instance of the class.
         /// </summary>
         public HomeContentFragment()
             : base()

@@ -12,7 +12,7 @@ namespace WebApp
     public sealed class Module : IModule
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Module"/> class.
+        /// Initializes a new instance of the class.
         /// </summary>
         public Module()
         {
