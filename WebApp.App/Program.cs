@@ -2,6 +2,9 @@
 
 namespace HalloWorld.App
 {
+    /// <summary>
+    /// The main program class.
+    /// </summary>
     internal class Program
     {
         /// <summary>

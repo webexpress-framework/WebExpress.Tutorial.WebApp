@@ -29,7 +29,7 @@ To get started with `WebExpress`, use the following links.
 How to tutorial to demonstrate a simple `WebExpress` application. The application includes the creation of a home page that displays this tutorial and an info page with information about the application.
 
 ## Prerequisites
-- Install .NET 8.0. You can download and install .NET 8.0 from the official .NET website. Follow the instructions on the website to complete the installation.
+- Install .NET 9.0. You can download and install .NET 9.0 from the official .NET website. Follow the instructions on the website to complete the installation.
 - Verify the installation. Open the command line or terminal and run the following command:
   ```bash
   dotnet --version
@@ -45,6 +45,7 @@ After fulfilling these prerequisites, you can proceed with the tutorial.
 - Navigate to the desired directory.
 - Use the command cd `path/to/directory` to navigate to the desired directory.
 - Create a new solution. Enter the following command and press Enter:
+
   ```bash
   # create a new folder for your solution
   mkdir WebExpress.Tutorial.WebApp
@@ -64,7 +65,7 @@ After fulfilling these prerequisites, you can proceed with the tutorial.
   dotnet sln add ./WebApp/WebApp.csproj
   ```
 
-This command creates a new .NET solution named `WebExpress.Tutorial.WebApp` and uses .NET 8.0 as the framework.
+This command creates a new .NET solution named `WebExpress.Tutorial.WebApp` and uses .NET 9.0 as the framework.
 - Check the newly created solution. There should now be a new directory named `WebExpress.Tutorial.WebApp` in the current directory. You can view the contents of this directory with the command ls (Linux/Mac) or dir (Windows).
 - Open the solution in your preferred development environment.
   - If you are using Visual Studio Code, you can open the solution with the command `code .` in the solution directory.
@@ -73,6 +74,7 @@ Now you have created a new solution and are ready to proceed with the next steps
 
 ## Customize the project
 - Add the necessary dependencies in the `WebApp` project file.
+
   ```xml
   <PropertyGroup>
       ...
@@ -80,50 +82,53 @@ Now you have created a new solution and are ready to proceed with the next steps
   </PropertyGroup>
 
   <ItemGroup>
-      <PackageReference Include="WebExpress.WebCore" Version="0.0.7-alpha">
+      <PackageReference Include="WebExpress.WebCore" Version="0.0.8-alpha">
           <Private>false</Private>
           <ExcludeAssets>runtime</ExcludeAssets>
       </PackageReference>
 
-      <PackageReference Include="WebExpress.WebUI" Version="0.0.7-alpha">
+      <PackageReference Include="WebExpress.WebUI" Version="0.0.8-alpha">
           <Private>false</Private>
           <ExcludeAssets>runtime</ExcludeAssets>
       </PackageReference>
 
-      <PackageReference Include="WebExpress.WebIndex" Version="0.0.7-alpha">
+      <PackageReference Include="WebExpress.WebIndex" Version="0.0.8-alpha">
           <Private>false</Private>
           <ExcludeAssets>runtime</ExcludeAssets>
       </PackageReference>
 
-      <PackageReference Include="WebExpress.WebApp" Version="0.0.7-alpha">
+      <PackageReference Include="WebExpress.WebApp" Version="0.0.8-alpha">
           <Private>false</Private>
           <ExcludeAssets>runtime</ExcludeAssets>
       </PackageReference>
   </ItemGroup>
-
   ```
+
 - Add the necessary dependencies in the `WebApp.App` project file.
+
   ```xml
   <ItemGroup>
-      <PackageReference Include="WebExpress.WebCore" Version="0.0.7-alpha" />
-      <PackageReference Include="WebExpress.WebUI" Version="0.0.7-alpha" />
-      <PackageReference Include="WebExpress.WebIndex" Version="0.0.7-alpha" />
-      <PackageReference Include="WebExpress.WebApp" Version="0.0.7-alpha" />
+      <PackageReference Include="WebExpress.WebCore" Version="0.0.8-alpha" />
+      <PackageReference Include="WebExpress.WebUI" Version="0.0.8-alpha" />
+      <PackageReference Include="WebExpress.WebIndex" Version="0.0.8-alpha" />
+      <PackageReference Include="WebExpress.WebApp" Version="0.0.8-alpha" />
   </ItemGroup>
 
   <ItemGroup>
       <ProjectReference Include="../WebApp/WebApp.csproj" />
   </ItemGroup>
   ```
+
 - Adjust the project file to your requirements.
 
 ## Configure the WebExpress package
 - Add a file named `WebExpress.Tutorial.WebApp.spec` in the solution folder.
+
   ```xml
   <?xml version="1.0" encoding="utf-8"?>
   <package>
       <id>WebExpress.Tutorial.WebApp</id>
-      <version>0.0.7-alpha</version>
+      <version>0.0.8-alpha</version>
       <title>WebApp</title>
       <authors>rene_schwarzer@hotmail.de</authors>
       <license>MIT</license>
@@ -135,8 +140,10 @@ Now you have created a new solution and are ready to proceed with the next steps
       <plugin>WebApp</plugin>
   </package>
   ```
+
 - Adjust the spec file to your requirements.
 - Add the spec file in the `WebApp.App` project file.
+
   ```
   <Target Name="PostBuild" AfterTargets="PostBuildEvent" Condition="'$(Configuration)' == 'Release'">
       <Exec Command="$(SolutionDir)$(AssemblyName)/bin/$(Configuration)/$(TargetFramework)/$(AssemblyName).exe -s $(SolutionDir)/$(SolutionName).spec -c $(Configuration) -t $(TargetFramework) -o $(SolutionDir)/pkg/$(Configuration)" />
@@ -145,6 +152,7 @@ Now you have created a new solution and are ready to proceed with the next steps
 
 ## Create a WebExpress plugin
 - Create a new class `Plugin` in the `WebApp` project that implements the `IPlugin` interface.
+
   ```csharp
   using WebExpress.WebCore.WebAttribute;
   using WebExpress.WebCore.WebPlugin;
@@ -154,12 +162,10 @@ Now you have created a new solution and are ready to proceed with the next steps
       [Name("webapp:plugin.name")]
       [Description("webapp:plugin.description")]
       [Icon("/assets/img/webapp.svg")]
-      [Dependency("webexpress.webui")]
+      [Application<Application>()]
       public sealed class Plugin : IPlugin
       {
-          public void Initialization(IPluginContext context) {}
           public void Run() {}
-          public void Dispose() {}
       }
   }
   ```
@@ -167,6 +173,7 @@ Now you have created a new solution and are ready to proceed with the next steps
 
 ## Create a WebExpress application
 - Create a new class `Application` in the `WebApp` project that implements the `IApplication` interface.
+
   ```csharp
   using WebExpress.WebCore.WebApplication;
   using WebExpress.WebCore.WebAttribute;
@@ -176,44 +183,18 @@ Now you have created a new solution and are ready to proceed with the next steps
       [Name("webapp:app.name")]
       [Description("webapp:app.description")]
       [Icon("/assets/img/webapp.svg")]
-      [AssetPath("/")]
       [ContextPath("/webapp")]
       public sealed class Application : IApplication
       {
-          public void Initialization(IApplicationContext context) {}
           public void Run() {}
-          public void Dispose() {}
      }
-  }
-  ```
-- Adjust the class to your requirements.
-
-## Create a WebExpress module
-- Create a new class `Module` in the `WebApp` project that implements the `IModule` interface.
-  ```csharp
-  using WebExpress.WebCore.WebAttribute;
-  using WebExpress.WebCore.WebModule;
-
-  namespace WebApp
-  {
-      [Name("webapp:module.name")]
-      [Description("webapp:module.description")]
-      [Icon("/assets/img/webapp.svg")]
-      [AssetPath("/")]
-      [ContextPath("/")]
-      [Application<Application>]
-      public sealed class Module : IModule
-      {
-          public void Initialization(IModuleContext context) {}
-          public void Run() {}
-          public void Dispose() {}
-      }
   }
   ```
 - Adjust the class to your requirements.
 
 ## Create a home page
 - Create a new view for the home page in the `WebApp` project.
+
   ```csharp
   using WebExpress.WebApp.WebPage;
   using WebExpress.WebCore.WebAttribute;
@@ -225,15 +206,17 @@ Now you have created a new solution and are ready to proceed with the next steps
   {
       [Title("webapp:homepage.label")]
       [Segment(null, "webapp:homepage.label")]
-      [ContextPath(null)]
-      [Module<Module>]
-      public sealed class HomePage : PageWebApp, IScope
+      [Scope<IScopeGeneral>]
+      public sealed class HomePage : IPage<VisualTreeWebApp>, IScopeGeneral
       {
+          public void Process(IRenderContext renderContext, VisualTreeWebApp visualTree) {}
       }
   }
   ```
+
 - Adjust the homepage to your requirements.
 - Copy this radme file in the solution directory and add the in the `WebApp` project file. 
+
   ```xml
   <ItemGroup>
       <EmbeddedResource Include="../README.md" />
@@ -242,6 +225,7 @@ Now you have created a new solution and are ready to proceed with the next steps
 
 ## Create a info page
 - Create a new view for the info page in the `WebApp` project.
+
   ```csharp
   using System.Linq;
   using WebExpress.WebApp.WebPage;
@@ -256,86 +240,67 @@ Now you have created a new solution and are ready to proceed with the next steps
   {
       [Title("webapp:infopage.label")]
       [Segment("info", "webapp:infopage.label")]
-      [ContextPath(null)]
-      [Module<Module>]
-      public sealed class InfoPage : PageWebApp, IScope
+      [Scope<IScopeGeneral>]
+      public sealed class InfoPage : IPage<VisualTreeWebApp>, IScopeGeneral
       {
-          public override void Process(RenderContextWebApp context)
+          public void Process(IRenderContext renderContext, VisualTreeWebApp visualTree)
           {
-              base.Process(context);
-
-              var visualTree = context.VisualTree;
-              var webexpress = ComponentManager.PluginManager.Plugins.Where(x => x.PluginId == "webexpress.webapp").FirstOrDefault();
-              var webapp = ComponentManager.PluginManager.Plugins.Where(x => x.Assembly == GetType().Assembly).FirstOrDefault();
-
+              var webexpress = WebEx.ComponentHub.PluginManager.Plugins.Where(x => x.PluginId.ToString() == "webexpress.webapp").FirstOrDefault();
+              var webapp = WebEx.ComponentHub.PluginManager.Plugins.Where(x => x.Assembly == GetType().Assembly).FirstOrDefault();
+         
               visualTree.Content.Primary.Add(new ControlImage()
               {
-                  Uri = ResourceContext.ContextPath.Append("assets/img/webapp.svg"),
+                  Uri = renderContext.PageContext.ContextPath.Append("assets/img/webapp.svg"),
                   Width = 200,
                   Height = 200,
                   HorizontalAlignment = TypeHorizontalAlignment.Right
               });
-
-              var card = new ControlPanelCard() { Margin = new PropertySpacingMargin(PropertySpacing.Space.Null, PropertySpacing.Space.Two) };
-
+         
+              var card = new ControlPanelCard()
+              {
+                  Margin = new PropertySpacingMargin(PropertySpacing.Space.Null, PropertySpacing.Space.Two)
+              };
+         
               card.Add(new ControlText()
               {
-                  Text = this.I18N("webapp:app.name"),
+                  Text = I18N.Translate(renderContext.Request?.Culture, "webapp:app.name"),
                   Format = TypeFormatText.H3
               });
-
+         
               card.Add(new ControlText()
               {
-                  Text = this.I18N("webapp:app.description"),
+                  Text = I18N.Translate(renderContext.Request?.Culture, "webapp:app.description"),
                   Format = TypeFormatText.Paragraph
               });
-
+         
               card.Add(new ControlText()
               {
-                  Text = this.I18N("webapp:app.about"),
+                  Text = I18N.Translate(renderContext.Request?.Culture, "webapp:app.about"),
                   Format = TypeFormatText.H3
               });
-
+         
               card.Add(new ControlText()
               {
                   Text = string.Format
                   (
-                      this.I18N("webapp:app.version.label"),
-                      this.I18N(webapp?.PluginName),
+                      I18N.Translate(renderContext.Request?.Culture, "webapp:app.version.label"),
+                      I18N.Translate(renderContext.Request?.Culture, webapp?.PluginName),
                       webapp?.Version,
                       webexpress?.PluginName,
                       webexpress?.Version
                   ),
                   TextColor = new PropertyColorText(TypeColorText.Primary)
               });
-
+         
               visualTree.Content.Primary.Add(card);
           }
       }
   }
   ```
 
-## Create a resource endpoint for assets
-- Create a `ResourceAsset` class in the `WebApp` project, witch delivery embedded resources.
-  ```csharp
-  using WebExpress.WebCore.WebAttribute;
-  using WebExpress.WebCore.WebResource;
-
-  namespace WebApp.WebResource
-  {
-      [Title("Assets")]
-      [Segment("assets", "")]
-      [ContextPath("/")]
-      [IncludeSubPaths(true)]
-      [Module<Module>]
-      public sealed class ResourceAsset : WebExpress.WebCore.WebResource.ResourceAsset
-      {
-      }
-  }
-  ```
-
 ## Add a fragment for the content of the home page
 - Create a new fragment to view the content in the `WebApp` project.
+
   ```csharp
   using System.IO;
   using WebApp.WebPage;
@@ -349,19 +314,18 @@ Now you have created a new solution and are ready to proceed with the next steps
 
   namespace WebApp.WebFragment
   {
-      [Section(SectionWebApp.ContentPrimary)]
-      [Module<Module>]
+      [Section<SectionContentPrimary>]
       [Scope<HomePage>]
+      [Cache]
       public sealed class HomeContentFragment : FragmentControlPanel
       {
-          public override void Initialization(IFragmentContext context, IPage page)
+          public HomeContentFragment(IFragmentContext fragmentContext)
+            : base(fragmentContext)
           {
-              base.Initialization(context, page);
-
               using var stream = GetType().Assembly.GetManifestResourceStream("WebApp.README.md");
               using var reader = new StreamReader(stream);
 
-              Content.Add(new ControlText()
+              Add(new ControlText()
               {
                   Format = TypeFormatText.Markdown,
                   Text = reader.ReadToEnd()
@@ -372,8 +336,9 @@ Now you have created a new solution and are ready to proceed with the next steps
   ```
 - Adjust the fragment to your requirements.
 
-## Add a fragment for the link to the info page
-- Create a new fragment to view the info page in the `WebApp` project.
+## Add a fragment for the link to the home page
+- Create a new fragment to link the home page in the `WebApp` project.
+
   ```csharp
   using WebApp.WebPage;
   using WebExpress.WebApp.WebSection;
@@ -387,27 +352,75 @@ Now you have created a new solution and are ready to proceed with the next steps
 
   namespace WebApp.WebFragment
   {
-      [Section(SectionWebApp.AppNavigationSecondary)]
-      [Module<Module>]
+      [Section<SectionAppNavigationPrimary>]
+      [Scope<IScopeGeneral>]
       [Cache]
-      public sealed class InfoFragment : FragmentControlNavigationItemLink
+      public sealed class HomeLinkFragment : FragmentControlNavigationItemLink
       {
-          public override void Initialization(IFragmentContext context, IPage page)
+          public HomeFragment(IComponentHub componentHub, IFragmentContext fragmentContext)
+            : base(fragmentContext)
           {
-              base.Initialization(context, page);
+              Text = "webapp:homepage.label";
+              Uri = componentHub.SitemapManager.GetUri<HomePage>(fragmentContext.ApplicationContext);
+              Icon = new PropertyIcon(TypeIcon.Home);
+          }
 
-              Text = "webapp:infopage.label";
-              Uri = ComponentManager.SitemapManager.GetUri<InfoPage>();
-              Icon = new PropertyIcon(TypeIcon.InfoCircle);
-              Active = page is InfoPage ? TypeActive.Active : TypeActive.None;
+          public override IHtmlNode Render(IRenderControlContext renderContext)
+          {
+              Active = renderContext.Endpoint is HomePage ? TypeActive.Active : TypeActive.None;
+
+              return base.Render(renderContext);
           }
       }
   }
   ```
+
+- Adjust the fragment to your requirements.
+
+## Add a fragment for the link to the info page
+- Create a new fragment to link the info page in the `WebApp` project.
+
+  ```csharp
+  using WebApp.WebPage;
+  using WebExpress.WebApp.WebSection;
+  using WebExpress.WebCore.WebAttribute;
+  using WebExpress.WebCore.WebComponent;
+  using WebExpress.WebCore.WebHtml;
+  using WebExpress.WebCore.WebPage;
+  using WebExpress.WebUI.WebAttribute;
+  using WebExpress.WebUI.WebControl;
+  using WebExpress.WebUI.WebFragment;
+
+  namespace WebApp.WebFragment
+  {
+      [Section<SectionAppNavigationSecondary>]
+      [Scope<IScopeGeneral>]
+      [Cache]
+      public sealed class InfoLinkFragment : FragmentControlNavigationItemLink
+      {
+          public InfoFragment(IComponentHub componentHub, IFragmentContext fragmentContext)
+              : base(fragmentContext)
+          {
+              Text = "webapp:infopage.label";
+              Uri = componentHub.SitemapManager.GetUri<InfoPage>(fragmentContext.ApplicationContext);
+              Icon = new PropertyIcon(TypeIcon.InfoCircle);
+          }
+
+          public override IHtmlNode Render(IRenderControlContext renderContext)
+          {
+              Active = renderContext.Endpoint is InfoPage ? TypeActive.Active : TypeActive.None;
+
+              return base.Render(renderContext);
+          }
+      }
+  }
+  ```
+
 - Adjust the fragment to your requirements.
 
 ## Add a fragment for the page footer
 - Create a new fragment to view the footer in the `WebApp` project.
+
   ```csharp
   using WebExpress.WebApp.WebSection;
   using WebExpress.WebCore.Internationalization;
@@ -420,8 +433,8 @@ Now you have created a new solution and are ready to proceed with the next steps
 
   namespace WebApp.WebFragment
   {
-      [Section(SectionWebApp.FooterPrimary)]
-      [Module<Module>]
+      [Section<SectionFooterPrimary>]
+      [Scope<IScopeGeneral>]
       public sealed class FooterFragment : FragmentControlPanel
       {
           private ControlLink LicenceLink { get; } = new ControlLink()
@@ -429,24 +442,31 @@ Now you have created a new solution and are ready to proceed with the next steps
               TextColor = new PropertyColorText(TypeColorText.Muted),
               Size = new PropertySizeText(TypeSizeText.Small)
           };
-
-          public override void Initialization(IFragmentContext context, IPage page)
+    
+          public FooterFragment(IFragmentContext fragmentContext)
+              : base(fragmentContext)
           {
-              base.Initialization(context, page);
-
-              Classes.Add("text-center");  
-
-              LicenceLink.Text = context.I18N("webapp:app.license.label");
-              LicenceLink.Uri = context.I18N("webapp:app.license.uri");
-              Content.Add(LicenceLink);
+              Classes.Add("text-center");
+    
+              Add(LicenceLink);
+          }
+    
+          public override IHtmlNode Render(IRenderControlContext renderContext)
+          {
+              LicenceLink.Text = "webapp:app.license.label";
+              LicenceLink.Uri = I18N.Translate(renderContext.Request?.Culture, "webapp:app.license.uri");
+    
+              return base.Render(renderContext);
           }
       }
   }
   ```
+
 - Adjust the fragment to your requirements.
 
 ## Change the program class
 - Change the program class of the `WebApp.App` project as follows:
+
   ```csharp
   using System.Reflection;
 
@@ -469,6 +489,7 @@ Now you have created a new solution and are ready to proceed with the next steps
 
 ## Internationalization
 - Add support for multiple languages. This can be achieved by using i18n files. Each resource file contains the translations for all strings in your application. Name your resource files according to the culture they represent. For example, the file for German translations should be called `de``. In the following, we use the english language.
+
  ```
   plugin.name=WebApp
   plugin.description=Tutorial of a simple WebExprss application.
@@ -489,6 +510,7 @@ Now you have created a new solution and are ready to proceed with the next steps
   ```
 
   - Add the en file in the `WebApp` project file.
+  
   ```xml
   <ItemGroup>
       <EmbeddedResource Include="Internationalization/en" />
@@ -498,6 +520,7 @@ Now you have created a new solution and are ready to proceed with the next steps
 ## Add the Assets
 - Add assets to the `WebApp` project. You can get the assets for this tutorial here: https://github.com/ReneSchwarzer/WebExpress.Tutorial.WebApp/tree/main/WebApp/Assets/img
 - Add the assets in the `WebApp` project file.
+
   ```xml
   <ItemGroup>
       <EmbeddedResource Include="Assets/img/favicon.png" />
@@ -507,6 +530,7 @@ Now you have created a new solution and are ready to proceed with the next steps
 
 ## Add a Configuration
 - The application must be configured. A standard configuration must be delivered for this purpose. Add the configuration file to the `WebApp.App` project.
+
   ```xml
   <?xml version="1.0" encoding="utf-8" ?>
   <config version = "1">
@@ -524,7 +548,9 @@ Now you have created a new solution and are ready to proceed with the next steps
       <contextpath></contextpath>
   </config>
   ```
+
 - Include the configuration file in the `WebApp.App` project file.
+
   ```
   <ItemGroup>
       <None Update="config/webexpress.config.xml">
@@ -535,12 +561,14 @@ Now you have created a new solution and are ready to proceed with the next steps
 
 ## Compile and register in WebExpress
 - Compile the solution as a release. To do this, open the command line or terminal in the solution directory and run the following command:
+
   ```bash
   dotnet build --configuration Release
   ```
   This command compiles the solution in release mode. You can find the compiled files in the `bin/Release` directory of your project.
 
 - Run the solution by starting the `WebApp.App` project.
+
   ```bash
   cd WebApp.App\bin\Release\net8.0
   dotnet run --project ../../../WebApp.App.csproj
@@ -549,9 +577,8 @@ Now you have created a new solution and are ready to proceed with the next steps
 - After compiling, there should be a file with the `.wxp` extension in the `pkg/Release` directory. This file do you need in `WebExpress`.
 
 ## Try the application
-- Check the result by calling up the following URL in the browser: http://localhost/webapp
-
-Good luck!
+- Check the result by calling up the following URL in the browser: [http://localhost/webapp](http://localhost/webapp)
+- Good luck!
     
 # Tags
 #WebExpress #WebServer #WebCore #WebUI #Tutorial #DotNet

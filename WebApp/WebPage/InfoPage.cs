@@ -1,73 +1,68 @@
 ﻿using System.Linq;
 using WebExpress.WebApp.WebPage;
+using WebExpress.WebApp.WebScope;
+using WebExpress.WebCore;
 using WebExpress.WebCore.Internationalization;
 using WebExpress.WebCore.WebAttribute;
-using WebExpress.WebCore.WebComponent;
-using WebExpress.WebCore.WebResource;
-using WebExpress.WebCore.WebScope;
+using WebExpress.WebCore.WebPage;
 using WebExpress.WebUI.WebControl;
 
 namespace WebApp.WebPage
 {
+    /// <summary>
+    /// Represents the info pagef or the tutorial.
+    /// </summary>
     [Title("webapp:infopage.label")]
     [Segment("info", "webapp:infopage.label")]
-    [ContextPath(null)]
-    [Module<Module>]
-    public sealed class InfoPage : PageWebApp, IScope
+    [Scope<IScopeGeneral>]
+    public sealed class InfoPage : IPage<VisualTreeWebApp>, IScopeGeneral
     {
         /// <summary>
-        /// Initializes a new instance of the class.
+        /// Initializes a new instance of the class with the specified page context.
         /// </summary>
-        public InfoPage()
+        /// <param name="pageContext">The context of the page.</param>
+        public InfoPage(IPageContext pageContext)
         {
-        }
-
-        /// <summary>
-        /// Initialization
-        /// </summary>
-        /// <param name="context">The context</param>
-        public override void Initialization(IResourceContext context)
-        {
-            base.Initialization(context);
         }
 
         /// <summary>
         /// Processing of the resource.
         /// </summary>
-        /// <param name="context">The context for rendering the page.</param>
-        public override void Process(RenderContextWebApp context)
+        /// <param name="renderContext">The context for rendering the page.</param>
+        /// <param name="visualTree">The visual tree of the web application.</param>
+        public void Process(IRenderContext renderContext, VisualTreeWebApp visualTree)
         {
-            base.Process(context);
-
-            var visualTree = context.VisualTree;
-            var webexpress = ComponentManager.PluginManager.Plugins.Where(x => x.PluginId == "webexpress.webapp").FirstOrDefault();
-            var webapp = ComponentManager.PluginManager.Plugins.Where(x => x.Assembly == GetType().Assembly).FirstOrDefault();
+            var webexpress = WebEx.ComponentHub.PluginManager.Plugins.Where(x => x.PluginId.ToString() == "webexpress.webapp").FirstOrDefault();
+            var webapp = WebEx.ComponentHub.PluginManager.Plugins.Where(x => x.Assembly == GetType().Assembly).FirstOrDefault();
 
             visualTree.Content.Primary.Add(new ControlImage()
             {
-                Uri = ResourceContext.ContextPath.Append("assets/img/webapp.svg"),
+                Uri = renderContext.PageContext.ContextPath.Append("assets/img/webapp.svg"),
                 Width = 200,
                 Height = 200,
                 HorizontalAlignment = TypeHorizontalAlignment.Right
             });
 
-            var card = new ControlPanelCard() { Margin = new PropertySpacingMargin(PropertySpacing.Space.Null, PropertySpacing.Space.Two) };
+            var card = new ControlPanelCard()
+            {
+                Margin = new PropertySpacingMargin(PropertySpacing.Space.Null, PropertySpacing.Space.Two)
+            };
 
             card.Add(new ControlText()
             {
-                Text = this.I18N("webapp:app.name"),
+                Text = I18N.Translate(renderContext.Request?.Culture, "webapp:app.name"),
                 Format = TypeFormatText.H3
             });
 
             card.Add(new ControlText()
             {
-                Text = this.I18N("webapp:app.description"),
+                Text = I18N.Translate(renderContext.Request?.Culture, "webapp:app.description"),
                 Format = TypeFormatText.Paragraph
             });
 
             card.Add(new ControlText()
             {
-                Text = this.I18N("webapp:app.about"),
+                Text = I18N.Translate(renderContext.Request?.Culture, "webapp:app.about"),
                 Format = TypeFormatText.H3
             });
 
@@ -75,8 +70,8 @@ namespace WebApp.WebPage
             {
                 Text = string.Format
                 (
-                    this.I18N("webapp:app.version.label"),
-                    this.I18N(webapp?.PluginName),
+                    I18N.Translate(renderContext.Request?.Culture, "webapp:app.version.label"),
+                    I18N.Translate(renderContext.Request?.Culture, webapp?.PluginName),
                     webapp?.Version,
                     webexpress?.PluginName,
                     webexpress?.Version

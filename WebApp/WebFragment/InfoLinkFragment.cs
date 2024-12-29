@@ -1,7 +1,8 @@
-﻿using WebExpress.WebApp.WebScope;
+﻿using WebApp.WebPage;
+using WebExpress.WebApp.WebScope;
 using WebExpress.WebApp.WebSection;
-using WebExpress.WebCore.Internationalization;
 using WebExpress.WebCore.WebAttribute;
+using WebExpress.WebCore.WebComponent;
 using WebExpress.WebCore.WebFragment;
 using WebExpress.WebCore.WebHtml;
 using WebExpress.WebUI.WebControl;
@@ -11,34 +12,27 @@ using WebExpress.WebUI.WebPage;
 namespace WebApp.WebFragment
 {
     /// <summary>
-    /// Represents the footer fragment of the web application.
+    /// Represents a navigation item link for the info page.
     /// </summary>
     /// <remarks>
-    /// This fragment is used to display the footer section, including a license link.
+    /// This fragment is used to create a navigation link to the Info page with an icon and label.
     /// </remarks>
-    [Section<SectionFooterPrimary>]
+    [Section<SectionAppNavigationSecondary>]
     [Scope<IScopeGeneral>]
-    public sealed class FooterFragment : FragmentControlPanel
+    [Cache]
+    public sealed class InfoLinkFragment : FragmentControlNavigationItemLink
     {
-        /// <summary>
-        /// The license link.
-        /// </summary>
-        private ControlLink LicenceLink { get; } = new ControlLink()
-        {
-            TextColor = new PropertyColorText(TypeColorText.Muted),
-            Size = new PropertySizeText(TypeSizeText.Small)
-        };
-
         /// <summary>
         /// Initializes a new instance of the class.
         /// </summary>
+        /// <param name="componentHub">The component hub used to manage components.</param>
         /// <param name="fragmentContext">The context in which the fragment is used.</param>
-        public FooterFragment(IFragmentContext fragmentContext)
+        public InfoLinkFragment(IComponentHub componentHub, IFragmentContext fragmentContext)
             : base(fragmentContext)
         {
-            Classes.Add("text-center");
-
-            Add(LicenceLink);
+            Text = "webapp:infopage.label";
+            Uri = componentHub.SitemapManager.GetUri<InfoPage>(fragmentContext.ApplicationContext);
+            Icon = new PropertyIcon(TypeIcon.InfoCircle);
         }
 
         /// <summary>
@@ -48,8 +42,7 @@ namespace WebApp.WebFragment
         /// <returns>An HTML node representing the rendered control.</returns>
         public override IHtmlNode Render(IRenderControlContext renderContext)
         {
-            LicenceLink.Text = "webapp:app.license.label";
-            LicenceLink.Uri = I18N.Translate(renderContext.Request?.Culture, "webapp:app.license.uri");
+            Active = renderContext.Endpoint is InfoPage ? TypeActive.Active : TypeActive.None;
 
             return base.Render(renderContext);
         }
