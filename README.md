@@ -31,10 +31,12 @@ How to tutorial to demonstrate a simple `WebExpress` application. The applicatio
 ## Prerequisites
 - Install .NET 9.0. You can download and install .NET 9.0 from the official .NET website. Follow the instructions on the website to complete the installation.
 - Verify the installation. Open the command line or terminal and run the following command:
+
   ```bash
   dotnet --version
   ```
-  This command outputs the installed .NET version. Make sure the outputted version matches the version you installed (in this case 8.0).
+
+  This command outputs the installed .NET version. Make sure the outputted version matches the version you installed (in this case 9.0).
 
 After fulfilling these prerequisites, you can proceed with the tutorial.
 
@@ -55,10 +57,10 @@ After fulfilling these prerequisites, you can proceed with the tutorial.
   dotnet new sln -n WebExpress.Tutorial.WebApp
 
   # create a new console application
-  dotnet new console -n WebApp.App -f net8.0
+  dotnet new console -n WebApp.App -f net9.0
 
   # create a new class library
-  dotnet new classlib -n WebApp -f net8.0
+  dotnet new classlib -n WebApp -f net9.0
 
   # add the projects to the solution
   dotnet sln add ./WebApp.App/WebApp.App.csproj
@@ -570,7 +572,7 @@ Now you have created a new solution and are ready to proceed with the next steps
 - Run the solution by starting the `WebApp.App` project.
 
   ```bash
-  cd WebApp.App\bin\Release\net8.0
+  cd WebApp.App\bin\Release\net9.0
   dotnet run --project ../../../WebApp.App.csproj
   ```
 
