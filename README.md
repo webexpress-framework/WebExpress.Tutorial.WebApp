@@ -367,11 +367,11 @@ Now you have created a new solution and are ready to proceed with the next steps
               Icon = new PropertyIcon(TypeIcon.Home);
           }
 
-          public override IHtmlNode Render(IRenderControlContext renderContext)
+          public override IHtmlNode Render(IRenderControlContext renderContext, IVisualTreeControl visualTree)
           {
               Active = renderContext.Endpoint is HomePage ? TypeActive.Active : TypeActive.None;
 
-              return base.Render(renderContext);
+              return base.Render(renderContext, visualTree);
           }
       }
   }
@@ -408,11 +408,11 @@ Now you have created a new solution and are ready to proceed with the next steps
               Icon = new PropertyIcon(TypeIcon.InfoCircle);
           }
 
-          public override IHtmlNode Render(IRenderControlContext renderContext)
+          public override IHtmlNode Render(IRenderControlContext renderContext, IVisualTreeControl visualTree)
           {
               Active = renderContext.Endpoint is InfoPage ? TypeActive.Active : TypeActive.None;
 
-              return base.Render(renderContext);
+              return base.Render(renderContext, visualTree);
           }
       }
   }
@@ -453,12 +453,12 @@ Now you have created a new solution and are ready to proceed with the next steps
               Add(LicenceLink);
           }
     
-          public override IHtmlNode Render(IRenderControlContext renderContext)
+          public override IHtmlNode Render(IRenderControlContext renderContext, IVisualTreeControl visualTree)
           {
               LicenceLink.Text = "webapp:app.license.label";
               LicenceLink.Uri = I18N.Translate(renderContext.Request?.Culture, "webapp:app.license.uri");
     
-              return base.Render(renderContext);
+              return base.Render(renderContext, visualTree);
           }
       }
   }

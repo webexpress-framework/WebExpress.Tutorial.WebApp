@@ -10,7 +10,7 @@ using WebExpress.WebUI.WebControl;
 namespace WebApp.WebPage
 {
     /// <summary>
-    /// Represents the info pagef or the tutorial.
+    /// Represents the info page for the tutorial.
     /// </summary>
     [Title("webapp:infopage.label")]
     [Segment("info", "webapp:infopage.label")]

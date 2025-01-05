@@ -45,13 +45,14 @@ namespace WebApp.WebFragment
         /// Convert the control to HTML.
         /// </summary>
         /// <param name="renderContext">The context in which the control is rendered.</param>
+        /// <param name="visualTree">The visual tree representing the control's structure.</param>
         /// <returns>An HTML node representing the rendered control.</returns>
-        public override IHtmlNode Render(IRenderControlContext renderContext)
+        public override IHtmlNode Render(IRenderControlContext renderContext, IVisualTreeControl visualTree)
         {
             LicenceLink.Text = "webapp:app.license.label";
             LicenceLink.Uri = I18N.Translate(renderContext.Request?.Culture, "webapp:app.license.uri");
 
-            return base.Render(renderContext);
+            return base.Render(renderContext, visualTree);
         }
     }
 }
