@@ -448,7 +448,7 @@ Now you have created a new solution and are ready to proceed with the next steps
           public FooterFragment(IFragmentContext fragmentContext)
               : base(fragmentContext)
           {
-              Classes.Add("text-center");
+              Classes = ["text-center"];
     
               Add(LicenceLink);
           }

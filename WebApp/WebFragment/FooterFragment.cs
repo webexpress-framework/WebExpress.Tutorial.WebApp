@@ -36,7 +36,7 @@ namespace WebApp.WebFragment
         public FooterFragment(IFragmentContext fragmentContext)
             : base(fragmentContext)
         {
-            Classes.Add("text-center");
+            Classes = ["text-center"];
 
             Add(LicenceLink);
         }
