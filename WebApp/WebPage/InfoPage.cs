@@ -35,7 +35,7 @@ namespace WebApp.WebPage
             var webexpress = WebEx.ComponentHub.PluginManager.Plugins.Where(x => x.PluginId.ToString() == "webexpress.webapp").FirstOrDefault();
             var webapp = WebEx.ComponentHub.PluginManager.Plugins.Where(x => x.Assembly == GetType().Assembly).FirstOrDefault();
 
-            visualTree.Content.Primary.Add(new ControlImage()
+            visualTree.Content.MainPanel.AddPrimary(new ControlImage()
             {
                 Uri = renderContext.PageContext.ContextPath.Append("assets/img/webapp.svg"),
                 Width = 200,
@@ -79,7 +79,7 @@ namespace WebApp.WebPage
                 TextColor = new PropertyColorText(TypeColorText.Primary)
             });
 
-            visualTree.Content.Primary.Add(card);
+            visualTree.Content.MainPanel.AddPrimary(card);
         }
     }
 }
