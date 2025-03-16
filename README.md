@@ -364,7 +364,7 @@ Now you have created a new solution and are ready to proceed with the next steps
           {
               Text = "webapp:homepage.label";
               Uri = componentHub.SitemapManager.GetUri<HomePage>(fragmentContext.ApplicationContext);
-              Icon = new PropertyIcon(TypeIcon.Home);
+              Icon = new IconHome();
           }
 
           public override IHtmlNode Render(IRenderControlContext renderContext, IVisualTreeControl visualTree)
@@ -405,7 +405,7 @@ Now you have created a new solution and are ready to proceed with the next steps
           {
               Text = "webapp:infopage.label";
               Uri = componentHub.SitemapManager.GetUri<InfoPage>(fragmentContext.ApplicationContext);
-              Icon = new PropertyIcon(TypeIcon.InfoCircle);
+              Icon = new IconInfoCircle();
           }
 
           public override IHtmlNode Render(IRenderControlContext renderContext, IVisualTreeControl visualTree)

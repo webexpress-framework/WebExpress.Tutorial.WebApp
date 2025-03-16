@@ -7,6 +7,7 @@ using WebExpress.WebCore.WebFragment;
 using WebExpress.WebCore.WebHtml;
 using WebExpress.WebUI.WebControl;
 using WebExpress.WebUI.WebFragment;
+using WebExpress.WebUI.WebIcon;
 using WebExpress.WebUI.WebPage;
 
 namespace WebApp.WebFragment
@@ -32,7 +33,7 @@ namespace WebApp.WebFragment
         {
             Text = "webapp:infopage.label";
             Uri = componentHub.SitemapManager.GetUri<InfoPage>(fragmentContext.ApplicationContext);
-            Icon = new PropertyIcon(TypeIcon.InfoCircle);
+            Icon = new IconInfoCircle();
         }
 
         /// <summary>
