@@ -4,6 +4,7 @@ using WebExpress.WebCore.Internationalization;
 using WebExpress.WebCore.WebAttribute;
 using WebExpress.WebCore.WebFragment;
 using WebExpress.WebCore.WebHtml;
+using WebExpress.WebCore.WebUri;
 using WebExpress.WebUI.WebControl;
 using WebExpress.WebUI.WebFragment;
 using WebExpress.WebUI.WebPage;
@@ -50,7 +51,7 @@ namespace WebApp.WebFragment
         public override IHtmlNode Render(IRenderControlContext renderContext, IVisualTreeControl visualTree)
         {
             LicenceLink.Text = "webapp:app.license.label";
-            LicenceLink.Uri = I18N.Translate(renderContext.Request?.Culture, "webapp:app.license.uri");
+            LicenceLink.Uri = new UriEndpoint(I18N.Translate(renderContext.Request?.Culture, "webapp:app.license.uri"));
 
             return base.Render(renderContext, visualTree);
         }

@@ -37,7 +37,7 @@ namespace WebApp.WebPage
 
             visualTree.Content.MainPanel.AddPrimary(new ControlImage()
             {
-                Uri = renderContext.PageContext.ContextPath.Append("assets/img/webapp.svg"),
+                Uri = renderContext.PageContext.ApplicationContext.ContextPath.Concat("assets/img/webapp.svg").ToUri(),
                 Width = 200,
                 Height = 200,
                 HorizontalAlignment = TypeHorizontalAlignment.Right

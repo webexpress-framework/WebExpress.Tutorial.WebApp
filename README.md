@@ -231,11 +231,11 @@ Now you have created a new solution and are ready to proceed with the next steps
   ```csharp
   using System.Linq;
   using WebExpress.WebApp.WebPage;
+  using WebExpress.WebApp.WebScope;
+  using WebExpress.WebCore;
   using WebExpress.WebCore.Internationalization;
   using WebExpress.WebCore.WebAttribute;
-  using WebExpress.WebCore.WebComponent;
-  using WebExpress.WebCore.WebResource;
-  using WebExpress.WebCore.WebScope;
+  using WebExpress.WebCore.WebPage;
   using WebExpress.WebUI.WebControl;
 
   namespace WebApp.WebPage
@@ -424,14 +424,16 @@ Now you have created a new solution and are ready to proceed with the next steps
 - Create a new fragment to view the footer in the `WebApp` project.
 
   ```csharp
+  using WebExpress.WebApp.WebScope;
   using WebExpress.WebApp.WebSection;
   using WebExpress.WebCore.Internationalization;
   using WebExpress.WebCore.WebAttribute;
+  using WebExpress.WebCore.WebFragment;
   using WebExpress.WebCore.WebHtml;
-  using WebExpress.WebCore.WebPage;
-  using WebExpress.WebUI.WebAttribute;
+  using WebExpress.WebCore.WebUri;
   using WebExpress.WebUI.WebControl;
   using WebExpress.WebUI.WebFragment;
+  using WebExpress.WebUI.WebPage;
 
   namespace WebApp.WebFragment
   {
@@ -456,7 +458,7 @@ Now you have created a new solution and are ready to proceed with the next steps
           public override IHtmlNode Render(IRenderControlContext renderContext, IVisualTreeControl visualTree)
           {
               LicenceLink.Text = "webapp:app.license.label";
-              LicenceLink.Uri = I18N.Translate(renderContext.Request?.Culture, "webapp:app.license.uri");
+              LicenceLink.Uri = new UriEndpoint(I18N.Translate(renderContext.Request?.Culture, "webapp:app.license.uri"));
     
               return base.Render(renderContext, visualTree);
           }
