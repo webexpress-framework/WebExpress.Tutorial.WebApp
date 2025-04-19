@@ -1,9 +1,7 @@
 ![WebExpress](https://raw.githubusercontent.com/ReneSchwarzer/WebExpress/main/assets/banner.png)
 
 # WebExpress
-`WebExpress` is a lightweight web server optimized for use in low-performance environments (e.g. Rasperry PI). By providing 
-a powerful plugin system and a comprehensive API, web applications can be easily and quickly integrated into a .net 
-language (e.g. C#). Some advantages of `WebExpress` are:
+`WebExpress` is a lightweight web server optimized for use in low-performance environments (e.g. Rasperry PI). By providing a powerful plugin system and a comprehensive API, web applications can be easily and quickly integrated into a .net language (e.g. C#). Some advantages of `WebExpress` are:
 
 - It is easy to use.
 - It offers a variety of features and tools that can help you build and manage your website.
@@ -84,17 +82,7 @@ Now you have created a new solution and are ready to proceed with the next steps
   </PropertyGroup>
 
   <ItemGroup>
-      <PackageReference Include="WebExpress.WebCore" Version="0.0.8-alpha">
-          <Private>false</Private>
-          <ExcludeAssets>runtime</ExcludeAssets>
-      </PackageReference>
-
-      <PackageReference Include="WebExpress.WebUI" Version="0.0.8-alpha">
-          <Private>false</Private>
-          <ExcludeAssets>runtime</ExcludeAssets>
-      </PackageReference>
-
-      <PackageReference Include="WebExpress.WebIndex" Version="0.0.8-alpha">
+     <PackageReference Include="WebExpress.WebIndex" Version="0.0.8-alpha">
           <Private>false</Private>
           <ExcludeAssets>runtime</ExcludeAssets>
       </PackageReference>
@@ -110,8 +98,6 @@ Now you have created a new solution and are ready to proceed with the next steps
 
   ```xml
   <ItemGroup>
-      <PackageReference Include="WebExpress.WebCore" Version="0.0.8-alpha" />
-      <PackageReference Include="WebExpress.WebUI" Version="0.0.8-alpha" />
       <PackageReference Include="WebExpress.WebIndex" Version="0.0.8-alpha" />
       <PackageReference Include="WebExpress.WebApp" Version="0.0.8-alpha" />
   </ItemGroup>
@@ -137,7 +123,7 @@ Now you have created a new solution and are ready to proceed with the next steps
       <icon>icon.png</icon>
       <readme>README.md</readme>
       <privacypolicy>PrivacyPolicy.md</privacypolicy>
-      <description>Provides a simple WebExpress application.</description>
+      <description>A Tutorial how to demonstrate a simple WebExpress application.</description>
       <tags>webexpress tutorial</tags>
       <plugin>WebApp</plugin>
   </package>
@@ -474,7 +460,7 @@ Now you have created a new solution and are ready to proceed with the next steps
   ```csharp
   using System.Reflection;
 
-  namespace HalloWorld.App
+  namespace WebApp.App
   {
       internal class Program
       {
@@ -496,18 +482,15 @@ Now you have created a new solution and are ready to proceed with the next steps
 
  ```
   plugin.name=WebApp
-  plugin.description=Tutorial of a simple WebExprss application.
+  plugin.description=A Tutorial how to demonstrate a simple WebExpress application.
 
   app.name=WebApp Tutorial
   app.label=WebExprss Application
-  app.description=Tutorial of a simple WebExpress application.
+  app.description=A Tutorial how to demonstrate a simple WebExpress application.
   app.license.label=License MIT 
   app.license.uri=https://github.com/ReneSchwarzer/WebExpress.Tutorial.WebApp/blob/main/LICENSE
   app.about=About WebApp Tutorial
   app.version.label={0} version {1} created with {2} version {3}.
-
-  module.name=WebApp
-  module.description=Module of the WebApp application.
 
   homepage.label=Home page
   infopage.label=Info
@@ -533,7 +516,7 @@ Now you have created a new solution and are ready to proceed with the next steps
   ```
 
 ## Add a Configuration
-- The application must be configured. A standard configuration must be delivered for this purpose. Add the configuration file to the `WebApp.App` project.
+- The application must be configured. A standard configuration must be delivered for this purpose. Add the configuration file `config/webexpress.config.xml` to the `WebApp.App` project.
 
   ```xml
   <?xml version="1.0" encoding="utf-8" ?>
