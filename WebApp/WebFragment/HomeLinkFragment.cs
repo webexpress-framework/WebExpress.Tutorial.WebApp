@@ -1,4 +1,4 @@
-﻿using WebApp.WebPage;
+﻿using WebApp.WWW;
 using WebExpress.WebApp.WebScope;
 using WebExpress.WebApp.WebSection;
 using WebExpress.WebCore.WebAttribute;
@@ -32,7 +32,7 @@ namespace WebApp.WebFragment
             : base(fragmentContext)
         {
             Text = "webapp:homepage.label";
-            Uri = componentHub.SitemapManager.GetUri<HomePage>(fragmentContext.ApplicationContext);
+            Uri = componentHub.SitemapManager.GetUri<Index>(fragmentContext.ApplicationContext);
             Icon = new IconHome();
         }
 
@@ -44,7 +44,7 @@ namespace WebApp.WebFragment
         /// <returns>An HTML node representing the rendered control.</returns>
         public override IHtmlNode Render(IRenderControlContext renderContext, IVisualTreeControl visualTree)
         {
-            Active = renderContext.Endpoint is HomePage ? TypeActive.Active : TypeActive.None;
+            Active = renderContext.Endpoint is Index ? TypeActive.Active : TypeActive.None;
 
             return base.Render(renderContext, visualTree);
         }

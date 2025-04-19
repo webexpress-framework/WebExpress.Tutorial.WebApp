@@ -9,6 +9,12 @@
 	  <EnableDynamicLoading>true</EnableDynamicLoading>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Assets\md\**" />
+    <EmbeddedResource Remove="Assets\md\**" />
+    <None Remove="Assets\md\**" />
+  </ItemGroup>
+
 	<ItemGroup>
 		<PackageReference Include="WebExpress.WebCore" Version="0.0.8-alpha">
 			<Private>false</Private>

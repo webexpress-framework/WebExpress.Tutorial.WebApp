@@ -1,4 +1,4 @@
-﻿using WebApp.WebPage;
+﻿using WebApp.WWW;
 using WebExpress.WebApp.WebScope;
 using WebExpress.WebApp.WebSection;
 using WebExpress.WebCore.WebAttribute;
@@ -32,7 +32,7 @@ namespace WebApp.WebFragment
             : base(fragmentContext)
         {
             Text = "webapp:infopage.label";
-            Uri = componentHub.SitemapManager.GetUri<InfoPage>(fragmentContext.ApplicationContext);
+            Uri = componentHub.SitemapManager.GetUri<Info>(fragmentContext.ApplicationContext);
             Icon = new IconInfoCircle();
         }
 
@@ -44,7 +44,7 @@ namespace WebApp.WebFragment
         /// <returns>An HTML node representing the rendered control.</returns>
         public override IHtmlNode Render(IRenderControlContext renderContext, IVisualTreeControl visualTree)
         {
-            Active = renderContext.Endpoint is InfoPage ? TypeActive.Active : TypeActive.None;
+            Active = renderContext.Endpoint is Info ? TypeActive.Active : TypeActive.None;
 
             return base.Render(renderContext, visualTree);
         }

@@ -1,5 +1,5 @@
 ﻿using System.IO;
-using WebApp.WebPage;
+using WebApp.WWW;
 using WebExpress.WebApp.WebSection;
 using WebExpress.WebCore.WebAttribute;
 using WebExpress.WebCore.WebFragment;
@@ -14,10 +14,10 @@ namespace WebApp.WebFragment
     /// Represents the fragment control panel for the home content.
     /// </summary>
     /// <remarks>
-    /// This fragment is used within the <see cref="HomePage"/> scope and is part of the <see cref="SectionContentPrimary"/> section.
+    /// This fragment is used within the <see cref="Index"/> scope and is part of the <see cref="SectionContentPrimary"/> section.
     /// </remarks>
     [Section<SectionContentPrimary>]
-    [Scope<HomePage>]
+    [Scope<Index>]
     [Cache]
     public sealed class HomeContentFragment : FragmentControlPanel
     {

@@ -7,21 +7,20 @@ using WebExpress.WebCore.WebAttribute;
 using WebExpress.WebCore.WebPage;
 using WebExpress.WebUI.WebControl;
 
-namespace WebApp.WebPage
+namespace WebApp.WWW
 {
     /// <summary>
     /// Represents the info page for the tutorial.
     /// </summary>
     [Title("webapp:infopage.label")]
-    [Segment("info", "webapp:infopage.label")]
     [Scope<IScopeGeneral>]
-    public sealed class InfoPage : IPage<VisualTreeWebApp>, IScopeGeneral
+    public sealed class Info : IPage<VisualTreeWebApp>, IScopeGeneral
     {
         /// <summary>
         /// Initializes a new instance of the class with the specified page context.
         /// </summary>
         /// <param name="pageContext">The context of the page.</param>
-        public InfoPage(IPageContext pageContext)
+        public Info(IPageContext pageContext)
         {
         }
 

@@ -190,12 +190,11 @@ Now you have created a new solution and are ready to proceed with the next steps
   using WebExpress.WebCore.WebScope;
   using WebExpress.WebUI.WebControl;
 
-  namespace WebApp.WebPage
+  namespace WebApp.WWW
   {
       [Title("webapp:homepage.label")]
-      [Segment(null, "webapp:homepage.label")]
       [Scope<IScopeGeneral>]
-      public sealed class HomePage : IPage<VisualTreeWebApp>, IScopeGeneral
+      public sealed class Index : IPage<VisualTreeWebApp>, IScopeGeneral
       {
           public void Process(IRenderContext renderContext, VisualTreeWebApp visualTree) {}
       }
@@ -224,12 +223,11 @@ Now you have created a new solution and are ready to proceed with the next steps
   using WebExpress.WebCore.WebPage;
   using WebExpress.WebUI.WebControl;
 
-  namespace WebApp.WebPage
+  namespace WebApp.WWWW
   {
       [Title("webapp:infopage.label")]
-      [Segment("info", "webapp:infopage.label")]
       [Scope<IScopeGeneral>]
-      public sealed class InfoPage : IPage<VisualTreeWebApp>, IScopeGeneral
+      public sealed class Info : IPage<VisualTreeWebApp>, IScopeGeneral
       {
           public void Process(IRenderContext renderContext, VisualTreeWebApp visualTree)
           {
@@ -238,7 +236,7 @@ Now you have created a new solution and are ready to proceed with the next steps
          
               visualTree.Content.MainPanel.AddPrimary(new ControlImage()
               {
-                  Uri = renderContext.PageContext.ContextPath.Append("assets/img/webapp.svg"),
+                  Uri = renderContext.PageContext.ApplicationContext.ContextPath.Concat("assets/img/webapp.svg").ToUri(),
                   Width = 200,
                   Height = 200,
                   HorizontalAlignment = TypeHorizontalAlignment.Right

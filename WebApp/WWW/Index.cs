@@ -3,20 +3,19 @@ using WebExpress.WebApp.WebScope;
 using WebExpress.WebCore.WebAttribute;
 using WebExpress.WebCore.WebPage;
 
-namespace WebApp.WebPage
+namespace WebApp.WWW
 {
     /// <summary>
     /// Represents the home page for the tutorial.
     /// </summary>
     [Title("webapp:homepage.label")]
-    [Segment(null, "webapp:homepage.label")]
     [Scope<IScopeGeneral>]
-    public sealed class HomePage : IPage<VisualTreeWebApp>, IScopeGeneral
+    public sealed class Index : IPage<VisualTreeWebApp>, IScopeGeneral
     {
         /// <summary>
         /// Initializes a new instance of the class.
         /// </summary>
-        public HomePage()
+        public Index()
         {
         }
 
