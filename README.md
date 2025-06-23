@@ -82,12 +82,12 @@ Now you have created a new solution and are ready to proceed with the next steps
   </PropertyGroup>
 
   <ItemGroup>
-     <PackageReference Include="WebExpress.WebIndex" Version="0.0.8-alpha">
+     <PackageReference Include="WebExpress.WebIndex" Version="0.0.9-alpha">
           <Private>false</Private>
           <ExcludeAssets>runtime</ExcludeAssets>
       </PackageReference>
 
-      <PackageReference Include="WebExpress.WebApp" Version="0.0.8-alpha">
+      <PackageReference Include="WebExpress.WebApp" Version="0.0.9-alpha">
           <Private>false</Private>
           <ExcludeAssets>runtime</ExcludeAssets>
       </PackageReference>
@@ -98,8 +98,8 @@ Now you have created a new solution and are ready to proceed with the next steps
 
   ```xml
   <ItemGroup>
-      <PackageReference Include="WebExpress.WebIndex" Version="0.0.8-alpha" />
-      <PackageReference Include="WebExpress.WebApp" Version="0.0.8-alpha" />
+      <PackageReference Include="WebExpress.WebIndex" Version="0.0.9-alpha" />
+      <PackageReference Include="WebExpress.WebApp" Version="0.0.9-alpha" />
   </ItemGroup>
 
   <ItemGroup>
@@ -116,7 +116,7 @@ Now you have created a new solution and are ready to proceed with the next steps
   <?xml version="1.0" encoding="utf-8"?>
   <package>
       <id>WebExpress.Tutorial.WebApp</id>
-      <version>0.0.8-alpha</version>
+      <version>0.0.9-alpha</version>
       <title>WebApp</title>
       <authors>rene_schwarzer@hotmail.de</authors>
       <license>MIT</license>
@@ -236,7 +236,7 @@ Now you have created a new solution and are ready to proceed with the next steps
          
               visualTree.Content.MainPanel.AddPrimary(new ControlImage()
               {
-                  Uri = renderContext.PageContext.ApplicationContext.ContextPath.Concat("assets/img/webapp.svg").ToUri(),
+                  Uri = renderContext.PageContext.ApplicationContext.Route.Concat("assets/img/webapp.svg").ToUri(),
                   Width = 200,
                   Height = 200,
                   HorizontalAlignment = TypeHorizontalAlignment.Right
@@ -508,9 +508,10 @@ Now you have created a new solution and are ready to proceed with the next steps
 
   ```xml
   <ItemGroup>
-      <EmbeddedResource Include="Assets/img/favicon.png" />
-      <EmbeddedResource Include="Assets/img/webapp.svg" />
-  </ItemGroup>
+		<EmbeddedResource Include="Assets/**/*.*">
+			<LogicalName>$(MSBuildProjectName).Assets.%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+		</EmbeddedResource>
+	</ItemGroup>
   ```
 
 ## Add a Configuration
