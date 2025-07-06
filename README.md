@@ -145,10 +145,10 @@ Now you have created a new solution and are ready to proceed with the next steps
   using WebExpress.WebCore.WebAttribute;
   using WebExpress.WebCore.WebPlugin;
 
-  namespace WebApp
+  namespace WebExpress.Tutorial.WebApp
   {
-      [Name("webapp:plugin.name")]
-      [Description("webapp:plugin.description")]
+      [Name("webexpress.tutorial.webapp:plugin.name")]
+      [Description("webexpress.tutorial.webapp:plugin.description")]
       [Icon("/assets/img/webapp.svg")]
       [Application<Application>()]
       public sealed class Plugin : IPlugin
@@ -166,10 +166,10 @@ Now you have created a new solution and are ready to proceed with the next steps
   using WebExpress.WebCore.WebApplication;
   using WebExpress.WebCore.WebAttribute;
 
-  namespace WebApp
+  namespace WebExpress.Tutorial.WebApp
   {
-      [Name("webapp:app.name")]
-      [Description("webapp:app.description")]
+      [Name("webexpress.tutorial.webapp:app.name")]
+      [Description("webexpress.tutorial.webapp:app.description")]
       [Icon("/assets/img/webapp.svg")]
       [ContextPath("/webapp")]
       public sealed class Application : IApplication
@@ -190,9 +190,9 @@ Now you have created a new solution and are ready to proceed with the next steps
   using WebExpress.WebCore.WebScope;
   using WebExpress.WebUI.WebControl;
 
-  namespace WebApp.WWW
+  namespace WebExpress.Tutorial.WebApp.WWW
   {
-      [Title("webapp:homepage.label")]
+      [Title("webexpress.tutorial.webapp:homepage.label")]
       [Scope<IScopeGeneral>]
       public sealed class Index : IPage<VisualTreeWebApp>, IScopeGeneral
       {
@@ -223,9 +223,9 @@ Now you have created a new solution and are ready to proceed with the next steps
   using WebExpress.WebCore.WebPage;
   using WebExpress.WebUI.WebControl;
 
-  namespace WebApp.WWWW
+  namespace WebExpress.Tutorial.WebApp.WWWW
   {
-      [Title("webapp:infopage.label")]
+      [Title("webexpress.tutorial.webapp:infopage.label")]
       [Scope<IScopeGeneral>]
       public sealed class Info : IPage<VisualTreeWebApp>, IScopeGeneral
       {
@@ -249,19 +249,19 @@ Now you have created a new solution and are ready to proceed with the next steps
          
               card.Add(new ControlText()
               {
-                  Text = I18N.Translate(renderContext.Request?.Culture, "webapp:app.name"),
+                  Text = I18N.Translate(renderContext.Request?.Culture, "webexpress.tutorial.webapp:app.name"),
                   Format = TypeFormatText.H3
               });
          
               card.Add(new ControlText()
               {
-                  Text = I18N.Translate(renderContext.Request?.Culture, "webapp:app.description"),
+                  Text = I18N.Translate(renderContext.Request?.Culture, "webexpress.tutorial.webapp:app.description"),
                   Format = TypeFormatText.Paragraph
               });
          
               card.Add(new ControlText()
               {
-                  Text = I18N.Translate(renderContext.Request?.Culture, "webapp:app.about"),
+                  Text = I18N.Translate(renderContext.Request?.Culture, "webexpress.tutorial.webapp:app.about"),
                   Format = TypeFormatText.H3
               });
          
@@ -269,7 +269,7 @@ Now you have created a new solution and are ready to proceed with the next steps
               {
                   Text = string.Format
                   (
-                      I18N.Translate(renderContext.Request?.Culture, "webapp:app.version.label"),
+                      I18N.Translate(renderContext.Request?.Culture, "webexpress.tutorial.webapp:app.version.label"),
                       I18N.Translate(renderContext.Request?.Culture, webapp?.PluginName),
                       webapp?.Version,
                       webexpress?.PluginName,
@@ -298,7 +298,7 @@ Now you have created a new solution and are ready to proceed with the next steps
   using WebExpress.WebUI.WebControl;
   using WebExpress.WebUI.WebFragment;
 
-  namespace WebApp.WebFragment
+  namespace WebExpress.Tutorial.WebApp.WebFragment
   {
       [Section<SectionContentPrimary>]
       [Scope<HomePage>]
@@ -336,7 +336,7 @@ Now you have created a new solution and are ready to proceed with the next steps
   using WebExpress.WebUI.WebControl;
   using WebExpress.WebUI.WebFragment;
 
-  namespace WebApp.WebFragment
+  namespace WebExpress.Tutorial.WebApp.WebFragment
   {
       [Section<SectionAppNavigationPrimary>]
       [Scope<IScopeGeneral>]
@@ -346,7 +346,7 @@ Now you have created a new solution and are ready to proceed with the next steps
           public HomeFragment(IComponentHub componentHub, IFragmentContext fragmentContext)
             : base(fragmentContext)
           {
-              Text = "webapp:homepage.label";
+              Text = "webexpress.tutorial.webapp:homepage.label";
               Uri = componentHub.SitemapManager.GetUri<HomePage>(fragmentContext.ApplicationContext);
               Icon = new IconHome();
           }
@@ -377,7 +377,7 @@ Now you have created a new solution and are ready to proceed with the next steps
   using WebExpress.WebUI.WebControl;
   using WebExpress.WebUI.WebFragment;
 
-  namespace WebApp.WebFragment
+  namespace WebExpress.Tutorial.WebApp.WebFragment
   {
       [Section<SectionAppNavigationSecondary>]
       [Scope<IScopeGeneral>]
@@ -387,7 +387,7 @@ Now you have created a new solution and are ready to proceed with the next steps
           public InfoFragment(IComponentHub componentHub, IFragmentContext fragmentContext)
               : base(fragmentContext)
           {
-              Text = "webapp:infopage.label";
+              Text = "webexpress.tutorial.webapp:infopage.label";
               Uri = componentHub.SitemapManager.GetUri<InfoPage>(fragmentContext.ApplicationContext);
               Icon = new IconInfoCircle();
           }
@@ -419,7 +419,7 @@ Now you have created a new solution and are ready to proceed with the next steps
   using WebExpress.WebUI.WebFragment;
   using WebExpress.WebUI.WebPage;
 
-  namespace WebApp.WebFragment
+  namespace WebExpress.Tutorial.WebApp.WebFragment
   {
       [Section<SectionFooterPrimary>]
       [Scope<IScopeGeneral>]
@@ -441,8 +441,8 @@ Now you have created a new solution and are ready to proceed with the next steps
     
           public override IHtmlNode Render(IRenderControlContext renderContext, IVisualTreeControl visualTree)
           {
-              LicenceLink.Text = "webapp:app.license.label";
-              LicenceLink.Uri = new UriEndpoint(I18N.Translate(renderContext.Request?.Culture, "webapp:app.license.uri"));
+              LicenceLink.Text = "webexpress.tutorial.webapp:app.license.label";
+              LicenceLink.Uri = new UriEndpoint(I18N.Translate(renderContext.Request?.Culture, "webexpress.tutorial.webapp:app.license.uri"));
     
               return base.Render(renderContext, visualTree);
           }
@@ -458,7 +458,7 @@ Now you have created a new solution and are ready to proceed with the next steps
   ```csharp
   using System.Reflection;
 
-  namespace WebApp.App
+  namespace WebExpress.Tutorial.WebApp.App
   {
       internal class Program
       {

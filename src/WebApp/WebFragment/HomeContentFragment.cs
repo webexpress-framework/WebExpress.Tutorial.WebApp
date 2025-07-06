@@ -1,5 +1,5 @@
 ﻿using System.IO;
-using WebApp.WWW;
+using WebExpress.Tutorial.WebApp.WWW;
 using WebExpress.WebApp.WebSection;
 using WebExpress.WebCore.WebAttribute;
 using WebExpress.WebCore.WebFragment;
@@ -8,7 +8,7 @@ using WebExpress.WebUI.WebControl;
 using WebExpress.WebUI.WebFragment;
 using WebExpress.WebUI.WebPage;
 
-namespace WebApp.WebFragment
+namespace WebExpress.Tutorial.WebApp.WebFragment
 {
     /// <summary>
     /// Represents the fragment control panel for the home content.
@@ -28,7 +28,7 @@ namespace WebApp.WebFragment
         public HomeContentFragment(IFragmentContext fragmentContext)
             : base(fragmentContext)
         {
-            using var stream = GetType().Assembly.GetManifestResourceStream("WebApp.README.md");
+            using var stream = GetType().Assembly.GetManifestResourceStream("WebExpress.Tutorial.WebApp.README.md");
             using var reader = new StreamReader(stream);
 
             Add(new ControlText()

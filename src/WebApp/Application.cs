@@ -1,13 +1,13 @@
 ﻿using WebExpress.WebCore.WebApplication;
 using WebExpress.WebCore.WebAttribute;
 
-namespace WebApp
+namespace WebExpress.Tutorial.WebApp
 {
     /// <summary>
     /// Represents the application of the tutorial.
     /// </summary>
-    [Name("webapp:app.name")]
-    [Description("webapp:app.description")]
+    [Name("webexpress.tutorial.webapp:app.name")]
+    [Description("webexpress.tutorial.webapp:app.description")]
     [Icon("/assets/img/webapp.svg")]
     [ContextPath("/webapp")]
     public sealed class Application : IApplication

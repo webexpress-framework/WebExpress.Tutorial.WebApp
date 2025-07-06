@@ -7,12 +7,12 @@ using WebExpress.WebCore.WebAttribute;
 using WebExpress.WebCore.WebPage;
 using WebExpress.WebUI.WebControl;
 
-namespace WebApp.WWW
+namespace WebExpress.Tutorial.WebApp.WWW
 {
     /// <summary>
     /// Represents the info page for the tutorial.
     /// </summary>
-    [Title("webapp:infopage.label")]
+    [Title("webexpress.tutorial.webapp:infopage.label")]
     [Scope<IScopeGeneral>]
     public sealed class Info : IPage<VisualTreeWebApp>, IScopeGeneral
     {
@@ -49,19 +49,19 @@ namespace WebApp.WWW
 
             card.Add(new ControlText()
             {
-                Text = I18N.Translate(renderContext.Request?.Culture, "webapp:app.name"),
+                Text = I18N.Translate(renderContext.Request?.Culture, "webexpress.tutorial.webapp:app.name"),
                 Format = TypeFormatText.H3
             });
 
             card.Add(new ControlText()
             {
-                Text = I18N.Translate(renderContext.Request?.Culture, "webapp:app.description"),
+                Text = I18N.Translate(renderContext.Request?.Culture, "webexpress.tutorial.webapp:app.description"),
                 Format = TypeFormatText.Paragraph
             });
 
             card.Add(new ControlText()
             {
-                Text = I18N.Translate(renderContext.Request?.Culture, "webapp:app.about"),
+                Text = I18N.Translate(renderContext.Request?.Culture, "webexpress.tutorial.webapp:app.about"),
                 Format = TypeFormatText.H3
             });
 
@@ -69,7 +69,7 @@ namespace WebApp.WWW
             {
                 Text = string.Format
                 (
-                    I18N.Translate(renderContext.Request?.Culture, "webapp:app.version.label"),
+                    I18N.Translate(renderContext.Request?.Culture, "webexpress.tutorial.webapp:app.version.label"),
                     I18N.Translate(renderContext.Request?.Culture, webapp?.PluginName),
                     webapp?.Version,
                     webexpress?.PluginName,

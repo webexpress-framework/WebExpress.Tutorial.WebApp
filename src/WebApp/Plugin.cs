@@ -1,13 +1,13 @@
 ﻿using WebExpress.WebCore.WebAttribute;
 using WebExpress.WebCore.WebPlugin;
 
-namespace WebApp
+namespace WebExpress.Tutorial.WebApp
 {
     /// <summary>  
     /// Represents the plugin for the tutorial.  
     /// </summary>  
-    [Name("webapp:plugin.name")]
-    [Description("webapp:plugin.description")]
+    [Name("webexpress.tutorial.webapp:plugin.name")]
+    [Description("webexpress.tutorial.webapp:plugin.description")]
     [Icon("/assets/img/webapp.svg")]
     [Application<Application>()]
     public sealed class Plugin : IPlugin

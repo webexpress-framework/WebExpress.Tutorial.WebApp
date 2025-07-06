@@ -9,7 +9,7 @@ using WebExpress.WebUI.WebControl;
 using WebExpress.WebUI.WebFragment;
 using WebExpress.WebUI.WebPage;
 
-namespace WebApp.WebFragment
+namespace WebExpress.Tutorial.WebApp.WebFragment
 {
     /// <summary>
     /// Represents the footer fragment of the web application.
@@ -50,8 +50,8 @@ namespace WebApp.WebFragment
         /// <returns>An HTML node representing the rendered control.</returns>
         public override IHtmlNode Render(IRenderControlContext renderContext, IVisualTreeControl visualTree)
         {
-            LicenceLink.Text = "webapp:app.license.label";
-            LicenceLink.Uri = new UriEndpoint(I18N.Translate(renderContext.Request?.Culture, "webapp:app.license.uri"));
+            LicenceLink.Text = "webexpress.tutorial.webapp:app.license.label";
+            LicenceLink.Uri = new UriEndpoint(I18N.Translate(renderContext.Request?.Culture, "webexpress.tutorial.webapp:app.license.uri"));
 
             return base.Render(renderContext, visualTree);
         }
