@@ -15,22 +15,7 @@
     <None Remove="Assets\md\**" />
   </ItemGroup>
 
-	<ItemGroup>
-		<PackageReference Include="WebExpress.WebCore" Version="0.0.9-alpha">
-			<Private>false</Private>
-			<ExcludeAssets>runtime</ExcludeAssets>
-		</PackageReference>
-
-		<PackageReference Include="WebExpress.WebUI" Version="0.0.9-alpha">
-			<Private>false</Private>
-			<ExcludeAssets>runtime</ExcludeAssets>
-		</PackageReference>
-
-		<PackageReference Include="WebExpress.WebIndex" Version="0.0.9-alpha">
-			<Private>false</Private>
-			<ExcludeAssets>runtime</ExcludeAssets>
-		</PackageReference>
-
+	<ItemGroup Condition="'$(Configuration)' != 'DebugLocal'">
 		<PackageReference Include="WebExpress.WebApp" Version="0.0.9-alpha">
 			<Private>false</Private>
 			<ExcludeAssets>runtime</ExcludeAssets>
@@ -49,7 +34,14 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<EmbeddedResource Include="../README.md" />
+		<EmbeddedResource Include="../../README.md" />
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(Configuration)' == 'DebugLocal'">
+	  <ProjectReference Include="..\..\..\WebExpress.WebApp\src\WebExpress.WebApp\WebExpress.WebApp.csproj" />
+	  <ProjectReference Include="..\..\..\WebExpress.WebCore\src\WebExpress.WebCore\WebExpress.WebCore.csproj" />
+	  <ProjectReference Include="..\..\..\WebExpress.WebIndex\src\WebExpress.WebIndex\WebExpress.WebIndex.csproj" />
+	  <ProjectReference Include="..\..\..\WebExpress.WebUI\src\WebExpress.WebUI\WebExpress.WebUI.csproj" />
 	</ItemGroup>
 
 </Project>

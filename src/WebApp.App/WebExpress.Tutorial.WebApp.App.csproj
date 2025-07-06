@@ -10,14 +10,11 @@
   </PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="WebExpress.WebCore" Version="0.0.9-alpha" />
-		<PackageReference Include="WebExpress.WebUI" Version="0.0.9-alpha" />
-		<PackageReference Include="WebExpress.WebIndex" Version="0.0.9-alpha" />
 		<PackageReference Include="WebExpress.WebApp" Version="0.0.9-alpha" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\WebApp\WebApp.csproj" />
+		<ProjectReference Include="..\WebApp\WebExpress.Tutorial.WebApp.csproj" />
 	</ItemGroup>
 
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent" Condition="'$(Configuration)' == 'Release'">
