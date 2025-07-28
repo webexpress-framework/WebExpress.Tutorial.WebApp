@@ -132,7 +132,7 @@ Now you have created a new solution and are ready to proceed with the next steps
 - Adjust the spec file to your requirements.
 - Add the spec file in the `WebApp.App` project file.
 
-  ```
+  ```xml
   <Target Name="PostBuild" AfterTargets="PostBuildEvent" Condition="'$(Configuration)' == 'Release'">
       <Exec Command="$(SolutionDir)$(AssemblyName)/bin/$(Configuration)/$(TargetFramework)/$(AssemblyName).exe -s $(SolutionDir)/$(SolutionName).spec -c $(Configuration) -t $(TargetFramework) -o $(SolutionDir)/pkg/$(Configuration)" />
   </Target>
@@ -478,7 +478,7 @@ Now you have created a new solution and are ready to proceed with the next steps
 ## Internationalization
 - Add support for multiple languages. This can be achieved by using i18n files. Each resource file contains the translations for all strings in your application. Name your resource files according to the culture they represent. For example, the file for German translations should be called `de``. In the following, we use the english language.
 
- ```
+ ```property
   plugin.name=WebApp
   plugin.description=A Tutorial how to demonstrate a simple WebExpress application.
 
@@ -537,7 +537,7 @@ Now you have created a new solution and are ready to proceed with the next steps
 
 - Include the configuration file in the `WebApp.App` project file.
 
-  ```
+  ```xml
   <ItemGroup>
       <None Update="config/webexpress.config.xml">
           <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
