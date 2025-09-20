@@ -6,7 +6,7 @@ app.name=WebApp Tutorial
 app.label=WebExprss Application
 app.description=Tutorial of a simple WebExpress application.
 app.license.label=License MIT 
-app.license.uri=https://github.com/ReneSchwarzer/WebExpress.Tutorial.WebApp/blob/main/LICENSE
+app.license.uri=https://github.com/webexpress-framework/WebExpress.Tutorial.WebApp/blob/main/LICENSE
 app.about=About WebApp Tutorial
 app.version.label={0} version {1} created with {2} version {3}.
 
