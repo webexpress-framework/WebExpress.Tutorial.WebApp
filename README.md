@@ -118,7 +118,7 @@ Now you have created a new solution and are ready to proceed with the next steps
       <id>WebExpress.Tutorial.WebApp</id>
       <version>0.0.9-alpha</version>
       <title>WebApp</title>
-      <authors>rene_schwarzer@hotmail.de</authors>
+      <authors>webexpress-framework@outlook.com</authors>
       <license>MIT</license>
       <icon>icon.png</icon>
       <readme>README.md</readme>
