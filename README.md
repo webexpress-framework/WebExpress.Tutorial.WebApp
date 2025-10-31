@@ -82,12 +82,12 @@ Now you have created a new solution and are ready to proceed with the next steps
   </PropertyGroup>
 
   <ItemGroup>
-     <PackageReference Include="WebExpress.WebIndex" Version="0.0.9-alpha">
+     <PackageReference Include="WebExpress.WebIndex" Version="0.0.10-alpha">
           <Private>false</Private>
           <ExcludeAssets>runtime</ExcludeAssets>
       </PackageReference>
 
-      <PackageReference Include="WebExpress.WebApp" Version="0.0.9-alpha">
+      <PackageReference Include="WebExpress.WebApp" Version="0.0.10-alpha">
           <Private>false</Private>
           <ExcludeAssets>runtime</ExcludeAssets>
       </PackageReference>
@@ -98,8 +98,8 @@ Now you have created a new solution and are ready to proceed with the next steps
 
   ```xml
   <ItemGroup>
-      <PackageReference Include="WebExpress.WebIndex" Version="0.0.9-alpha" />
-      <PackageReference Include="WebExpress.WebApp" Version="0.0.9-alpha" />
+      <PackageReference Include="WebExpress.WebIndex" Version="0.0.10-alpha" />
+      <PackageReference Include="WebExpress.WebApp" Version="0.0.10-alpha" />
   </ItemGroup>
 
   <ItemGroup>
@@ -116,7 +116,7 @@ Now you have created a new solution and are ready to proceed with the next steps
   <?xml version="1.0" encoding="utf-8"?>
   <package>
       <id>WebExpress.Tutorial.WebApp</id>
-      <version>0.0.9-alpha</version>
+      <version>0.0.10-alpha</version>
       <title>WebApp</title>
       <authors>webexpress-framework@outlook.com</authors>
       <license>MIT</license>
