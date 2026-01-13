@@ -51,7 +51,7 @@ namespace WebExpress.Tutorial.WebApp.WebFragment
         public override IHtmlNode Render(IRenderControlContext renderContext, IVisualTreeControl visualTree)
         {
             LicenceLink.Text = "webexpress.tutorial.webapp:app.license.label";
-            LicenceLink.Uri = new UriEndpoint(I18N.Translate(renderContext.Request?.Culture, "webexpress.tutorial.webapp:app.license.uri"));
+            LicenceLink.Uri = new UriEndpoint(I18N.Translate(renderContext, "webexpress.tutorial.webapp:app.license.uri"));
 
             return base.Render(renderContext, visualTree);
         }

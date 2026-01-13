@@ -249,19 +249,19 @@ Now you have created a new solution and are ready to proceed with the next steps
          
               card.Add(new ControlText()
               {
-                  Text = I18N.Translate(renderContext.Request?.Culture, "webexpress.tutorial.webapp:app.name"),
+                  Text = I18N.Translate(renderContext, "webexpress.tutorial.webapp:app.name"),
                   Format = TypeFormatText.H3
               });
          
               card.Add(new ControlText()
               {
-                  Text = I18N.Translate(renderContext.Request?.Culture, "webexpress.tutorial.webapp:app.description"),
+                  Text = I18N.Translate(renderContext, "webexpress.tutorial.webapp:app.description"),
                   Format = TypeFormatText.Paragraph
               });
          
               card.Add(new ControlText()
               {
-                  Text = I18N.Translate(renderContext.Request?.Culture, "webexpress.tutorial.webapp:app.about"),
+                  Text = I18N.Translate(renderContext, "webexpress.tutorial.webapp:app.about"),
                   Format = TypeFormatText.H3
               });
          
@@ -269,8 +269,8 @@ Now you have created a new solution and are ready to proceed with the next steps
               {
                   Text = string.Format
                   (
-                      I18N.Translate(renderContext.Request?.Culture, "webexpress.tutorial.webapp:app.version.label"),
-                      I18N.Translate(renderContext.Request?.Culture, webapp?.PluginName),
+                      I18N.Translate(renderContext, "webexpress.tutorial.webapp:app.version.label"),
+                      I18N.Translate(renderContext, webapp?.PluginName),
                       webapp?.Version,
                       webexpress?.PluginName,
                       webexpress?.Version
@@ -442,7 +442,7 @@ Now you have created a new solution and are ready to proceed with the next steps
           public override IHtmlNode Render(IRenderControlContext renderContext, IVisualTreeControl visualTree)
           {
               LicenceLink.Text = "webexpress.tutorial.webapp:app.license.label";
-              LicenceLink.Uri = new UriEndpoint(I18N.Translate(renderContext.Request?.Culture, "webexpress.tutorial.webapp:app.license.uri"));
+              LicenceLink.Uri = new UriEndpoint(I18N.Translate(renderContext, "webexpress.tutorial.webapp:app.license.uri"));
     
               return base.Render(renderContext, visualTree);
           }
