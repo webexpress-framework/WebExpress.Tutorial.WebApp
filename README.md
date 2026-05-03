@@ -275,7 +275,7 @@ Now you have created a new solution and are ready to proceed with the next steps
                       webexpress?.PluginName,
                       webexpress?.Version
                   ),
-                  TextColor = new PropertyColorText(TypeColorText.Primary)
+                  TextColor = _ => new PropertyColorText(TypeColorText.Primary)
               });
          
               visualTree.Content.MainPanel.AddPrimary(card);
@@ -427,7 +427,7 @@ Now you have created a new solution and are ready to proceed with the next steps
       {
           private ControlLink LicenceLink { get; } = new ControlLink()
           {
-              TextColor = new PropertyColorText(TypeColorText.Muted),
+              TextColor = _ => new PropertyColorText(TypeColorText.Muted),
               Size = new PropertySizeText(TypeSizeText.Small)
           };
     

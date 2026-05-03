@@ -26,7 +26,7 @@ namespace WebExpress.Tutorial.WebApp.WebFragment
         /// </summary>
         private ControlLink LicenceLink { get; } = new ControlLink()
         {
-            TextColor = new PropertyColorText(TypeColorText.Muted),
+            TextColor = _ => new PropertyColorText(TypeColorText.Muted),
             Size = new PropertySizeText(TypeSizeText.Small)
         };
 
