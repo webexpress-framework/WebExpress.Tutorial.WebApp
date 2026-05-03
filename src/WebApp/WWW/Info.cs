@@ -39,12 +39,12 @@ namespace WebExpress.Tutorial.WebApp.WWW
                 Uri = renderContext.PageContext.ApplicationContext.Route.Concat("assets/img/webapp.svg").ToUri(),
                 Width = 200,
                 Height = 200,
-                HorizontalAlignment = TypeHorizontalAlignment.Right
+                HorizontalAlignment = _ => TypeHorizontalAlignment.Right
             });
 
             var card = new ControlPanelCard()
             {
-                Margin = new PropertySpacingMargin(PropertySpacing.Space.Null, PropertySpacing.Space.Two)
+                Margin = _ => new PropertySpacingMargin(PropertySpacing.Space.Null, PropertySpacing.Space.Two)
             };
 
             card.Add(new ControlText()
