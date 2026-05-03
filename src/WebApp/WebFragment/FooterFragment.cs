@@ -27,7 +27,7 @@ namespace WebExpress.Tutorial.WebApp.WebFragment
         private ControlLink LicenceLink { get; } = new ControlLink()
         {
             TextColor = _ => new PropertyColorText(TypeColorText.Muted),
-            Size = new PropertySizeText(TypeSizeText.Small)
+            Size = _ => new PropertySizeText(TypeSizeText.Small)
         };
 
         /// <summary>
@@ -50,8 +50,8 @@ namespace WebExpress.Tutorial.WebApp.WebFragment
         /// <returns>An HTML node representing the rendered control.</returns>
         public override IHtmlNode Render(IRenderControlContext renderContext, IVisualTreeControl visualTree)
         {
-            LicenceLink.Text = "webexpress.tutorial.webapp:app.license.label";
-            LicenceLink.Uri = new UriEndpoint(I18N.Translate(renderContext, "webexpress.tutorial.webapp:app.license.uri"));
+            LicenceLink.Text = _ => "webexpress.tutorial.webapp:app.license.label";
+            LicenceLink.Uri = _ => new UriEndpoint(I18N.Translate(renderContext, "webexpress.tutorial.webapp:app.license.uri"));
 
             return base.Render(renderContext, visualTree);
         }

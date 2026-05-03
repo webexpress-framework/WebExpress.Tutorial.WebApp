@@ -31,9 +31,9 @@ namespace WebExpress.Tutorial.WebApp.WebFragment
         public InfoLinkFragment(IComponentHub componentHub, IFragmentContext fragmentContext)
             : base(fragmentContext)
         {
-            Text = "webexpress.tutorial.webapp:infopage.label";
-            Uri = componentHub.SitemapManager.GetUri<Info>(fragmentContext.ApplicationContext);
-            Icon = new IconInfoCircle();
+            Text = _ => "webexpress.tutorial.webapp:infopage.label";
+            Uri = _ => componentHub.SitemapManager.GetUri<Info>(fragmentContext.ApplicationContext);
+            Icon = _ => new IconInfoCircle();
         }
 
         /// <summary>
@@ -44,7 +44,7 @@ namespace WebExpress.Tutorial.WebApp.WebFragment
         /// <returns>An HTML node representing the rendered control.</returns>
         public override IHtmlNode Render(IRenderControlContext renderContext, IVisualTreeControl visualTree)
         {
-            Active = renderContext.Endpoint is Info ? TypeActive.Active : TypeActive.None;
+            Active = _ => renderContext.Endpoint is Info ? TypeActive.Active : TypeActive.None;
 
             return base.Render(renderContext, visualTree);
         }
