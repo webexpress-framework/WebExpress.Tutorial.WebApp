@@ -33,8 +33,8 @@ namespace WebExpress.Tutorial.WebApp.WebFragment
 
             Add(new ControlText()
             {
-                Format = TypeFormatText.Markdown,
-                Text = reader.ReadToEnd()
+                Format = _ => TypeFormatText.Markdown,
+                Text = _ => reader.ReadToEnd()
             });
         }
 
