@@ -236,38 +236,38 @@ Now you have created a new solution and are ready to proceed with the next steps
          
               visualTree.Content.MainPanel.AddPrimary(new ControlImage()
               {
-                  Uri = renderContext.PageContext.ApplicationContext.Route.Concat("assets/img/webapp.svg").ToUri(),
-                  Width = 200,
-                  Height = 200,
-                  HorizontalAlignment = TypeHorizontalAlignment.Right
+                  Uri = _ => renderContext.PageContext.ApplicationContext.Route.Concat("assets/img/webapp.svg").ToUri(),
+                  Width = _ => 200,
+                  Height = _ => 200,
+                  HorizontalAlignment = _ => TypeHorizontalAlignment.Right
               });
          
               var card = new ControlPanelCard()
               {
-                  Margin = new PropertySpacingMargin(PropertySpacing.Space.Null, PropertySpacing.Space.Two)
+                  Margin = _ => new PropertySpacingMargin(PropertySpacing.Space.Null, PropertySpacing.Space.Two)
               };
          
               card.Add(new ControlText()
               {
-                  Text = I18N.Translate(renderContext, "webexpress.tutorial.webapp:app.name"),
-                  Format = TypeFormatText.H3
+                  Text = _ => I18N.Translate(renderContext, "webexpress.tutorial.webapp:app.name"),
+                  Format = _ => TypeFormatText.H3
               });
          
               card.Add(new ControlText()
               {
-                  Text = I18N.Translate(renderContext, "webexpress.tutorial.webapp:app.description"),
-                  Format = TypeFormatText.Paragraph
+                  Text = _ => I18N.Translate(renderContext, "webexpress.tutorial.webapp:app.description"),
+                  Format = _ => TypeFormatText.Paragraph
               });
          
               card.Add(new ControlText()
               {
-                  Text = I18N.Translate(renderContext, "webexpress.tutorial.webapp:app.about"),
-                  Format = TypeFormatText.H3
+                  Text = _ => I18N.Translate(renderContext, "webexpress.tutorial.webapp:app.about"),
+                  Format = _ => TypeFormatText.H3
               });
          
               card.Add(new ControlText()
               {
-                  Text = string.Format
+                  Text = _ => string.Format
                   (
                       I18N.Translate(renderContext, "webexpress.tutorial.webapp:app.version.label"),
                       I18N.Translate(renderContext, webapp?.PluginName),
@@ -310,11 +310,12 @@ Now you have created a new solution and are ready to proceed with the next steps
           {
               using var stream = GetType().Assembly.GetManifestResourceStream("WebApp.README.md");
               using var reader = new StreamReader(stream);
+              var text = reader.ReadToEnd();
 
               Add(new ControlText()
               {
-                  Format = TypeFormatText.Markdown,
-                  Text = reader.ReadToEnd()
+                  Format = _ => TypeFormatText.Markdown,
+                  Text = _ => text
               });
           }
       }

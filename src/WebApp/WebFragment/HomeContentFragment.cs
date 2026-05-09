@@ -30,11 +30,12 @@ namespace WebExpress.Tutorial.WebApp.WebFragment
         {
             using var stream = GetType().Assembly.GetManifestResourceStream("WebExpress.Tutorial.WebApp.README.md");
             using var reader = new StreamReader(stream);
+            var text = reader.ReadToEnd();
 
             Add(new ControlText()
             {
                 Format = _ => TypeFormatText.Markdown,
-                Text = _ => reader.ReadToEnd()
+                Text = _ => text
             });
         }
 
