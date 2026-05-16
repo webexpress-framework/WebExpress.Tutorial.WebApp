@@ -231,8 +231,8 @@ Now you have created a new solution and are ready to proceed with the next steps
       {
           public void Process(IRenderContext renderContext, VisualTreeWebApp visualTree)
           {
-              var webexpress = WebEx.ComponentHub.PluginManager.Plugins.Where(x => x.PluginId.ToString() == "webexpress.webapp").FirstOrDefault();
-              var webapp = WebEx.ComponentHub.PluginManager.Plugins.Where(x => x.Assembly == GetType().Assembly).FirstOrDefault();
+              var webexpress = WebEx.ComponentHub.PluginManager?.Plugins.Where(x => x.PluginId.ToString() == "webexpress.webapp").FirstOrDefault();
+              var webapp = WebEx.ComponentHub.PluginManager?.Plugins.Where(x => x.Assembly == GetType().Assembly).FirstOrDefault();
          
               visualTree.Content.MainPanel.AddPrimary(new ControlImage()
               {
