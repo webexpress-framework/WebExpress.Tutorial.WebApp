@@ -566,6 +566,10 @@ Now you have created a new solution and are ready to proceed with the next steps
 ## Try the application
 - Check the result by calling up the following URL in the browser: [http://localhost/webapp](http://localhost/webapp)
 - Good luck!
+
+## AI transparency notice
+
+Parts of this software, its documentation, and its assets were created with the assistance of AI-based tools, including large language models. AI-assisted contributions are reviewed by the project maintainer before they are included.
     
 # Tags
 #WebExpress #WebServer #WebCore #WebUI #Tutorial #DotNet
