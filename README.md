@@ -242,7 +242,7 @@ Now you have created a new solution and are ready to proceed with the next steps
                   HorizontalAlignment = _ => TypeHorizontalAlignment.Right
               });
          
-              var card = new ControlPanelCard()
+              var card = new ControlCard()
               {
                   Margin = _ => new PropertySpacingMargin(PropertySpacing.Space.Null, PropertySpacing.Space.Two)
               };
