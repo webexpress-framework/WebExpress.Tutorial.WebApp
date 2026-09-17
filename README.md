@@ -516,35 +516,48 @@ Now you have created a new solution and are ready to proceed with the next steps
   ```
 
 ## Add a Configuration
-- The application must be configured. A standard configuration must be delivered for this purpose. Add the configuration file `config/webexpress.config.xml` to the `WebApp.App` project.
+- The application must be configured. A standard configuration must be delivered for this purpose. Add the settings file `settings/webexpress.settings.json` to the `WebApp.App` project. The settings of the server sit under `WebExpress`; the settings of your plugin go under `Plugins` in a section named after the plugin, so they never collide with those of another plugin.
 
-  ```xml
-  <?xml version="1.0" encoding="utf-8" ?>
-  <config version = "1">
-      <log modus="Off" debug="false" path="/var/log/" encoding="utf-8" filename="webexpress.log" timepattern="dd.MM.yyyy HH:mm:ss" />
-      <uri>http://localhost/</uri>
-      <endpoint uri="http://localhost/"/>
-      <kestrel>
-          <maxconcurrentconnections>300</maxconcurrentconnections>
-          <maxrequestbodysize>3000000000</maxrequestbodysize>
-      </kestrel>
-      <culture>en</culture>
-      <packages>./packages</packages>
-      <assets>./assets</assets>
-      <data>./data</data>
-      <contextpath></contextpath>
-  </config>
+  ```json
+  {
+    "WebExpress": {
+      "Log": {
+        "Mode": "Off",
+        "Debug": false,
+        "Path": "/var/log/",
+        "Encoding": "utf-8",
+        "FileName": "webexpress.log",
+        "TimePattern": "dd.MM.yyyy HH:mm:ss"
+      },
+      "Endpoints": [
+        { "Uri": "http://localhost/" }
+      ],
+      "Kestrel": {
+        "MaxConcurrentConnections": 300,
+        "MaxRequestBodySize": 3000000000
+      },
+      "Culture": "en",
+      "PackagePath": "./packages",
+      "AssetPath": "./assets",
+      "DataPath": "./data",
+      "ContextPath": ""
+    },
+    "Plugins": {
+    }
+  }
   ```
 
-- Include the configuration file in the `WebApp.App` project file.
+- Include the settings file in the `WebApp.App` project file.
 
   ```xml
   <ItemGroup>
-      <None Update="config/webexpress.config.xml">
+      <None Update="settings/webexpress.settings.json">
           <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
   </ItemGroup>
   ```
+
+- Settings of your own plugin are read through the plugin context, e.g. `PluginContext.Settings["Greeting"]`. To ship them with the package, keep them in a file of their own (e.g. `settings/<plugin id>.settings.json`, with its values under `Plugins`) and name it in the spec file with a `<settings>` element; on installation it is placed in the `settings` directory of the server.
 
 ## Compile and register in WebExpress
 - Compile the solution as a release. To do this, open the command line or terminal in the solution directory and run the following command:
