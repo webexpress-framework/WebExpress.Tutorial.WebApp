@@ -11,14 +11,15 @@ namespace HalloWorld.App
         /// Entry point of the application.
         /// </summary>
         /// <param name="args">Call arguments.</param>
-        static void Main(string[] args)
+        /// <returns>The exit code, not zero when the application could not start.</returns>
+        static int Main(string[] args)
         {
             var app = new WebExpress.WebCore.WebEx()
             {
                 Name = Assembly.GetExecutingAssembly().GetName().Name
             };
 
-            app.Execution(args);
+            return app.Execution(args);
         }
     }
 }
