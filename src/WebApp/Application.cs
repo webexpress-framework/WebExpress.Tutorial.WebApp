@@ -25,5 +25,13 @@ namespace WebExpress.Tutorial.WebApp
         public void Run()
         {
         }
+
+        /// <summary>
+        /// Disposes of the resources used by the application. This method is called when 
+        /// the application is no longer needed and should release any unmanaged resources.
+        /// </summary>
+        public void Dispose()
+        {
+        }
     }
 }
