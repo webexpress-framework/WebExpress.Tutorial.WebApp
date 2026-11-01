@@ -82,12 +82,12 @@ Now you have created a new solution and are ready to proceed with the next steps
   </PropertyGroup>
 
   <ItemGroup>
-     <PackageReference Include="WebExpress.WebIndex" Version="2.0.0-alpha">
+     <PackageReference Include="WebExpress.WebIndex" Version="2.0.1-alpha">
           <Private>false</Private>
           <ExcludeAssets>runtime</ExcludeAssets>
       </PackageReference>
 
-      <PackageReference Include="WebExpress.WebApp" Version="2.0.0-alpha">
+      <PackageReference Include="WebExpress.WebApp" Version="2.0.1-alpha">
           <Private>false</Private>
           <ExcludeAssets>runtime</ExcludeAssets>
       </PackageReference>
@@ -98,8 +98,8 @@ Now you have created a new solution and are ready to proceed with the next steps
 
   ```xml
   <ItemGroup>
-      <PackageReference Include="WebExpress.WebIndex" Version="2.0.0-alpha" />
-      <PackageReference Include="WebExpress.WebApp" Version="2.0.0-alpha" />
+      <PackageReference Include="WebExpress.WebIndex" Version="2.0.1-alpha" />
+      <PackageReference Include="WebExpress.WebApp" Version="2.0.1-alpha" />
   </ItemGroup>
 
   <ItemGroup>
@@ -116,7 +116,7 @@ Now you have created a new solution and are ready to proceed with the next steps
   <?xml version="1.0" encoding="utf-8"?>
   <package>
       <id>WebExpress.Tutorial.WebApp</id>
-      <version>2.0.0-alpha</version>
+      <version>2.0.1-alpha</version>
       <title>WebApp</title>
       <authors>webexpress-framework@outlook.com</authors>
       <license>MIT</license>
@@ -134,7 +134,7 @@ Now you have created a new solution and are ready to proceed with the next steps
 
   ```xml
   <Target Name="PostBuild" AfterTargets="PostBuildEvent" Condition="'$(Configuration)' == 'Release'">
-      <Exec Command="$(SolutionDir)$(AssemblyName)/bin/$(Configuration)/$(TargetFramework)/$(AssemblyName).exe -s $(SolutionDir)/$(SolutionName).spec -c $(Configuration) -t $(TargetFramework) -o $(SolutionDir)/pkg/$(Configuration)" />
+      <Exec Command="&quot;$(TargetDir)$(AssemblyName).exe&quot; -s &quot;$(MSBuildProjectDirectory)\..\WebExpress.Tutorial.WebApp.spec&quot; -c $(Configuration) -t $(TargetFramework) -o &quot;$(MSBuildProjectDirectory)\..\pkg\$(Configuration)&quot;" />
   </Target>
   ```
 
